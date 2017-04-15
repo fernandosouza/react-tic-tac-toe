@@ -13,4 +13,11 @@ describe('Board', () => {
     const wrapper = shallow(<Board />);
     expect(wrapper.find('.grid')).toHaveLength(9);
   });
+
+  it('renders fulfilled slots', () => {
+    const slots = [{fulfilledClass: 'filled'}];
+    const wrapper = shallow(<Board slots={slots} />);
+    expect(wrapper.find('.grid').at(0).hasClass('filled')).toBe(true);
+    expect(wrapper.find('.grid').at(1).hasClass('filled')).toBe(false);
+  });
 });
