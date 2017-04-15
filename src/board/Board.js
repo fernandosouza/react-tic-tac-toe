@@ -24,7 +24,7 @@ class Board extends PureComponent {
     return this.state.slots.map((slot, key) => {
       return (
         <div
-          className={'grid-' + key}
+          className={'grid grid-' + key}
           key={key}></div>
       );
     })
