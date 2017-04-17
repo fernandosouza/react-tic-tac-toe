@@ -42,8 +42,16 @@ class PlayersManager {
     return [...this.players_];
   }
 
+  /**
+   * Changes the current player by providing its index.
+   * @param {number} index The player index.
+   **/
   switchPlayer(index) {
-    this.currentPlayerIndex_ = switchPlayer;
+    if (index !== 0 && this.players_.length < index) {
+      throw Error('Player not found');
+      return;
+    }
+    this.currentPlayerIndex_ = index;
   }
 }
 

@@ -42,4 +42,24 @@ describe('PlayersManager', () => {
     playersManager.addPlayer(playerMock);
     expect(playersManager.getPlayers().length).toBe(3);
   });
+
+  it('should change the current player', () => {
+    const playersManager = new PlayersManager(playersMock);
+    let currentPlayer = playersManager.getCurrentPlayer();
+    expect(currentPlayer.name).toBe('Souza');
+    playersManager.switchPlayer(1);
+    
+    currentPlayer = playersManager.getCurrentPlayer();
+    expect(currentPlayer.name).toBe('Fernando');
+  });
+
+  it('should throws an error if switchPlayer() could not find the specified player', () => {
+    const playersManager = new PlayersManager(playersMock);
+    let currentPlayer = playersManager.getCurrentPlayer();
+    expect(currentPlayer.name).toBe('Souza');
+
+    expect(() => {
+      playersManager.switchPlayer(3);
+    }).toThrowError('Player not found');
+  });
 });
