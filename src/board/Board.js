@@ -17,6 +17,20 @@ class Board extends PureComponent {
   }
 
   /**
+   * Handles clicks on slots and passes its index through a onSlotClick 
+   * function that cames from a parent component.
+   * @param {String} index Slot index.
+   * @private 
+   */
+  slotClickHandler_(index) {
+    let { onSlotClick } = this.props;
+
+    if (isFunction(onSlotClick)) {
+      onSlotClick(index);
+    }
+  }
+
+  /**
    * Renders board slots that will be filled by gamers' pieces.
    * @private 
    */
@@ -29,6 +43,7 @@ class Board extends PureComponent {
       return (
         <div
           className={`grid grid-${key}${fulfilledClass}`}
+          onClick={this.slotClickHandler_.bind(this, key)}
           key={key}></div>
       );
     })
