@@ -53,6 +53,21 @@ class PlayersManager {
     }
     this.currentPlayerIndex_ = index;
   }
+
+  /**
+   * Changes the game turn to the next available player. Select the first player
+   * of the array if no next one is found.
+   **/
+  nextPlayerTurn() {
+    let currentPlayerIndex = this.currentPlayerIndex_;
+    currentPlayerIndex++;
+
+    if (currentPlayerIndex >= this.players_.length) {
+      currentPlayerIndex = 0;
+    }
+
+    this.switchPlayer(currentPlayerIndex);
+  }
 }
 
 export default PlayersManager;

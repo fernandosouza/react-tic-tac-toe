@@ -62,4 +62,28 @@ describe('PlayersManager', () => {
       playersManager.switchPlayer(3);
     }).toThrowError('Player not found');
   });
+
+  it('should switch to the next available player', () => {
+    const playersManager = new PlayersManager(playersMock);
+    let currentPlayer = playersManager.getCurrentPlayer();
+    expect(currentPlayer.name).toBe('Souza');
+
+    playersManager.nextPlayerTurn();
+    currentPlayer = playersManager.getCurrentPlayer();
+    expect(currentPlayer.name).toBe('Fernando');
+  });
+
+  it('should select the first player of the list if the current player is the last one', () => {
+    const playersManager = new PlayersManager(playersMock);
+    let currentPlayer = playersManager.getCurrentPlayer();
+    expect(currentPlayer.name).toBe('Souza');
+
+    playersManager.nextPlayerTurn();
+    currentPlayer = playersManager.getCurrentPlayer();
+    expect(currentPlayer.name).toBe('Fernando');
+
+    playersManager.nextPlayerTurn();
+    currentPlayer = playersManager.getCurrentPlayer();
+    expect(currentPlayer.name).toBe('Souza');
+  });
 });
