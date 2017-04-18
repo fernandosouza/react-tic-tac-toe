@@ -4,6 +4,14 @@ body {
   font-family: sans-serif;
 }
 
+.player2 {
+  background-color: red;
+}
+
+.player1 {
+  background-color: blue;
+}
+
 .wrapper {
   margin: 0 auto;
   width: 700px;
