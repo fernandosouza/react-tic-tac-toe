@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Board from './board/Board';
-import PlayersManager from './playersManager/PlayersManager';
+import TicTacToe from './ticTacToe/TicTacToe';
 import './App.css';
 
 /**
@@ -12,47 +12,11 @@ class App extends Component {
   constructor(prop) {
     super(prop);
 
+    this.game_ = new TicTacToe();
+
     this.state = {
       fulfileedSlots: []
     };
-
-    this.playerManager_ = new PlayersManager([
-      {
-        name: 'Player 1',
-        class: 'player1'
-      },
-      {
-        name: 'Player 2',
-        class: 'player2'
-      }
-    ]);
-  }
-  
-  /**
-   * Abstracts the creation of a fulfilled slot by getting the player unique
-   * reference and setting it as a CSS class to the slot.
-   * @returns {Object} An object that has a fulfilledClass property that takes the 
-   * player unique reference.
-   * @private 
-   **/
-  createFulfilledSlot_() {
-    let currentPlayer = this.playerManager_.getCurrentPlayer();
-    return {
-      fulfilledClass: currentPlayer.class
-    }
-  }
-
-  /**
-   * Updates the list of fulfelled slots.
-   * @param {Number} key The Board Slot index to be fufilled.
-   * @private 
-   **/
-  fillSlot_(key) {
-    let fulfileedSlots = [...this.state.fulfileedSlots];
-    fulfileedSlots[key] = this.createFulfilledSlot_();
-    this.setState({
-      fulfileedSlots: fulfileedSlots
-    });
   }
 
   /**
@@ -63,11 +27,10 @@ class App extends Component {
    * @private 
    **/
   onSlotClick_(key) {
-    if (this.state.fulfileedSlots[key]) {
-      return;
-    }
-    this.fillSlot_(key);
-    this.playerManager_.nextPlayerTurn();
+    this.game_.fillSlot(key);
+    this.setState({
+      fulfileedSlots: this.game_.getBoard()
+    });
   }
 
   render() {
