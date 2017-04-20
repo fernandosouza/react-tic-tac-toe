@@ -38,7 +38,7 @@ class Board extends PureComponent {
     let { slots } = this.props;
 
     return this.state.slots.map((slot, key) => {
-      let fulfilledClass = (Array.isArray(slots) && slots[key]) ? ` ${slots[key].fulfilledClass}` : '';
+      let fulfilledClass = (Array.isArray(slots) && slots[key]) ? ` filled player${slots[key]}` : '';
 
       return (
         <div
