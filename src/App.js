@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Board from './board/Board';
 import TicTacToe from './ticTacToe/TicTacToe';
+import Setup from './setup/Setup';
 import './App.css';
 
 /**
@@ -11,12 +12,10 @@ import './App.css';
 class App extends Component {
   constructor(prop) {
     super(prop);
-
-    this.game_ = new TicTacToe();
-
+    
     this.state = {
-      fulfileedSlots: []
-    };
+      ready: false
+    }
   }
 
   /**
@@ -33,8 +32,31 @@ class App extends Component {
     });
   }
 
+  /**
+   * 
+   * @param {Number} key The Board Slot index.
+   * @private 
+   **/
+  startGame_(playerOneName, playerTwoName) {
+    this.game_ = new TicTacToe(playerOneName, playerTwoName);
+    this.state = {
+      fulfileedSlots: []
+    };
+    this.setState({
+      ready: true
+    });
+  }
+
+  /**
+   * @inheritdoc
+   **/
   render() {
-    return <Board slots={this.state.fulfileedSlots} onSlotClick={this.onSlotClick_.bind(this)} />;
+    if (this.state.ready) {
+      return <Board slots={this.state.fulfileedSlots} onSlotClick={this.onSlotClick_.bind(this)} />;
+    }
+    else {
+      return <Setup onFinishSetup={this.startGame_.bind(this)} />
+    }
   }
 }
 

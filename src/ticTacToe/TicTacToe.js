@@ -1,18 +1,18 @@
 import PlayersManager from '../playersManager/PlayersManager';
 
 class TicTacToe {
-  constructor() {
+  constructor(playerOne, playerTwo) {
     this.board_ = [];
 
     this.playersManager_ = new PlayersManager([
       {
         id: 1,
-        name: 'Player 1',
+        name: playerOne,
         class: 'player1'
       },
       {
         id: 2,
-        name: 'Player 2',
+        name: playerTwo,
         class: 'player2'
       }
     ]);
