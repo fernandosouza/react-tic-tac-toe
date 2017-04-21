@@ -1,4 +1,4 @@
-import './tests/LocalStorageMock';
+import '../testHelpers/LocalStorageMock';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';

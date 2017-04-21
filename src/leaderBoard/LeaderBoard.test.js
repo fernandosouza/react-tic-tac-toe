@@ -1,4 +1,4 @@
-import '../tests/LocalStorageMock';
+import '../../testHelpers/LocalStorageMock';
 import React from 'react';
 import LeaderBoard from './LeaderBoard';
 import renderer from 'react-test-renderer';

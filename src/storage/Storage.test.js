@@ -1,4 +1,4 @@
-import '../tests/LocalStorageMock';
+import '../../testHelpers/LocalStorageMock';
 import Storage from './Storage';
 
 describe('Storage', () => {
