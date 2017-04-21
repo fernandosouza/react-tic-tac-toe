@@ -35,14 +35,17 @@ class Board extends PureComponent {
    * @private 
    */
   renderSlots_() {
-    let { slots } = this.props;
-
+    let { fulfilledSlots } = this.props;
     return this.state.slots.map((slot, key) => {
-      let fulfilledClass = (Array.isArray(slots) && slots[key]) ? ` filled player${slots[key]}` : '';
+      let fulfilledClass;
+
+      if (fulfilledSlots instanceof Map && fulfilledSlots.get(key)) {
+        fulfilledClass = ` filled player${fulfilledSlots.get(key)}`
+      }
 
       return (
         <div
-          className={`grid grid-${key}${fulfilledClass}`}
+          className={`grid grid-${key}${fulfilledClass||''}`}
           onClick={this.slotClickHandler_.bind(this, key)}
           key={key}></div>
       );
