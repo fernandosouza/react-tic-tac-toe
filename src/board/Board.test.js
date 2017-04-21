@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Board from './Board';
+import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
 describe('Board', () => {
@@ -8,10 +9,12 @@ describe('Board', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Board />, div);
   });
-
+  
   it('renders 9 slots', () => {
-    const wrapper = shallow(<Board />);
-    expect(wrapper.find('.grid')).toHaveLength(9);
+    const board = renderer.create(
+      <Board />
+    ).toJSON();
+    expect(board).toMatchSnapshot();
   });
 
   it('renders fulfilled slots', () => {
