@@ -28,12 +28,14 @@ class App extends Component {
    * @private 
    **/
   onGameEnd_(winner) {
-    this.setState({
-      winner: winner.name
-    });
+    if (winner) {
+      this.setState({
+        winner: winner.name
+      });
 
-    let gameLeaderBoard = this.storage_.getData();
-    this.storage_.update([winner.name, ...gameLeaderBoard]);
+      let gameLeaderBoard = this.storage_.getData();
+      this.storage_.update([winner.name, ...gameLeaderBoard]);
+    }
     this.props.history.push('/leaderboard');
   }
 
