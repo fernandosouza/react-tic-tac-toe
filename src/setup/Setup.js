@@ -16,6 +16,16 @@ class Setup extends Component {
   }
 
   /**
+   * Express conditions to disable the form submission.
+   * @returns {boolean} true for disable and false for enable
+   * @private 
+   **/
+  disableForm() {
+    let { playerOneName, playerTwoName } = this.state;
+    return playerOneName === playerTwoName;
+  }
+
+  /**
    * Listens to the form submission and informs the players` name to the
    * parent component.
    * @param {event} event The event object
@@ -24,7 +34,7 @@ class Setup extends Component {
   onFormSubmit_(event) {
     event.preventDefault();
     let { playerOneName, playerTwoName } = this.state;
-    if (playerOneName && playerTwoName) {
+    if (playerOneName && playerTwoName && !this.disableForm()) {
       this.props.onFinishSetup(playerOneName, playerTwoName);
     }
   }
@@ -55,6 +65,8 @@ class Setup extends Component {
    * @inheritdoc
    **/
   render() {
+    let disabled = this.disableForm();
+
     return (
       <form className="setup-page" onSubmit={this.onFormSubmit_.bind(this)}>
         <label htmlFor="playerOne">Player 1 - Name</label>
@@ -71,7 +83,7 @@ class Setup extends Component {
           onChange={this.onPlayerTwoNameChange_.bind(this)}
           id="playerTwo" />
 
-          <button> Start! </button>
+          <button disabled={disabled}> Start! </button>
       </form>
     );
   }

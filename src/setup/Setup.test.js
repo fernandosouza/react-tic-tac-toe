@@ -42,4 +42,19 @@ describe('Game', () => {
     wrapper.find('form').simulate('submit', new Event('submit'));
     expect(onFinishSetupMock.mock.calls.length).toBe(0);
   });
+
+  it('should not call onFinishSetup if players` names are equal', () => {
+    const onFinishSetupMock = jest.fn();
+    const wrapper = shallow(<Setup onFinishSetup={onFinishSetupMock} />);
+    const playerOneInput = wrapper.find('#playerOne');
+    const playerTwoInput = wrapper.find('#playerTwo');
+    
+    playerOneInput.value = 'Fernando';
+    playerTwoInput.value = 'Fernando';
+    playerOneInput.simulate('change', {target: {value: playerOneInput.value}});
+    playerTwoInput.simulate('change', {target: {value: playerTwoInput.value}});
+
+    wrapper.find('form').simulate('submit', new Event('submit'));
+    expect(onFinishSetupMock.mock.calls.length).toBe(0);
+  });
 });
