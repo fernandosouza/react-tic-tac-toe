@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Board from './board/Board';
 import TicTacToe from './ticTacToe/TicTacToe';
-import Setup from './setup/Setup';
+import Storage from './storage/Storage';
 import './App.css';
 
 /**
@@ -14,8 +14,27 @@ class App extends Component {
     super(prop);
     
     this.state = {
-      ready: false
+      fulfileedSlots: []
     }
+
+    let { firstPlayer, secondPlayer } = this.props.match.params;
+    this.game_ = new TicTacToe(firstPlayer, secondPlayer, this.onGameEnd_.bind(this));
+    this.storage_ = new Storage('gameLeaderBoard');
+  }
+
+  /**
+   * Callback method that will be called when the game is finished.
+   * @param {Object} winner The Player object.
+   * @private 
+   **/
+  onGameEnd_(winner) {
+    this.setState({
+      winner: winner.name
+    });
+
+    let gameLeaderBoard = this.storage_.getData();
+    this.storage_.update([winner.name, ...gameLeaderBoard]);
+    this.props.history.push('/leaderboard');
   }
 
   /**
@@ -29,21 +48,6 @@ class App extends Component {
     this.game_.fillSlot(key);
     this.setState({
       fulfileedSlots: this.game_.getBoard()
-    });
-  }
-
-  /**
-   * 
-   * @param {Number} key The Board Slot index.
-   * @private 
-   **/
-  startGame_(playerOneName, playerTwoName) {
-    this.game_ = new TicTacToe(playerOneName, playerTwoName);
-    this.state = {
-      fulfileedSlots: []
-    };
-    this.setState({
-      ready: true
     });
   }
 
