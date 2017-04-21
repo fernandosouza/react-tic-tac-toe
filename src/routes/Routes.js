@@ -9,7 +9,7 @@ import {
 
 export default props => {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <div>
         <Route exact path="/" component={Setup}/>
         <Route path="/firstPlayer/:firstPlayer/secondPlayer/:secondPlayer" component={App}/>
