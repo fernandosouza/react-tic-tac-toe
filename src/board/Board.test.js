@@ -15,9 +15,10 @@ describe('Board', () => {
   });
 
   it('renders fulfilled slots', () => {
-    const slots = [{fulfilledClass: 'filled'}];
+    const slots = [1, 0, 2];
     const wrapper = shallow(<Board slots={slots} />);
     expect(wrapper.find('.grid').at(0).hasClass('filled')).toBe(true);
     expect(wrapper.find('.grid').at(1).hasClass('filled')).toBe(false);
+    expect(wrapper.find('.grid').at(2).hasClass('filled')).toBe(true);
   });
 });
