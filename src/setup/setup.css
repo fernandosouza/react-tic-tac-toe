@@ -1,0 +1,17 @@
+.setup-page {
+  width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+.setup-page input, .setup-page button {
+  width: 100%;
+}
+
+.setup-page input {
+  margin-top: 5px; 
+}
+
+.setup-page label {
+  margin-top: 25px;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './setup.css';
 
 /**
  * Component responsible for getting players` name and passes it to the parent 
@@ -55,7 +56,7 @@ class Setup extends Component {
    **/
   render() {
     return (
-      <form onSubmit={this.onFormSubmit_.bind(this)}>
+      <form className="setup-page" onSubmit={this.onFormSubmit_.bind(this)}>
         <label htmlFor="playerOne">Player 1 - Name</label>
         <input
           type="text"
