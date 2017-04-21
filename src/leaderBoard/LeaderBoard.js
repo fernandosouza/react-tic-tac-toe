@@ -40,6 +40,7 @@ class LeaderBoard extends Component {
     let leaderBoard = this.state.leaderBoard.reverse();
     return (
       <div className="leader-board">
+        <h1>Leader Board</h1>
         {this.renderWinnerMessage_()}
         <ul>
         {leaderBoard.map((leader, key) => {
