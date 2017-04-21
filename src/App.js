@@ -51,12 +51,9 @@ class App extends Component {
    * @inheritdoc
    **/
   render() {
-    if (this.state.ready) {
-      return <Board slots={this.state.fulfileedSlots} onSlotClick={this.onSlotClick_.bind(this)} />;
-    }
-    else {
-      return <Setup onFinishSetup={this.startGame_.bind(this)} />
-    }
+    return <Board
+      fulfilledSlots={this.state.fulfileedSlots}
+      onSlotClick={this.onSlotClick_.bind(this)} />;
   }
 }
 

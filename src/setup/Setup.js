@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './setup.css';
+import { Link } from 'react-router-dom';
 
 /**
  * Component responsible for getting players` name and passes it to the parent 
@@ -35,7 +36,7 @@ class Setup extends Component {
     event.preventDefault();
     let { playerOneName, playerTwoName } = this.state;
     if (playerOneName && playerTwoName && !this.disableForm()) {
-      this.props.onFinishSetup(playerOneName, playerTwoName);
+      this.props.history.push(`/firstPlayer/${playerOneName}/secondPlayer/${playerTwoName}`);
     }
   }
 
