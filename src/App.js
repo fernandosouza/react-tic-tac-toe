@@ -35,8 +35,8 @@ class App extends Component {
 
       let gameLeaderBoard = this.storage_.getData();
       this.storage_.update([winner.name, ...gameLeaderBoard]);
+      this.props.history.push(`/leaderboard/${winner.name}`);
     }
-    this.props.history.push('/leaderboard');
   }
 
   /**
