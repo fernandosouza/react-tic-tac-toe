@@ -1,0 +1,44 @@
+$board-size: 500px;
+$grid-size: $board-size / 3;
+$grid-border: 1px solid rgba(255, 255, 255, .1);
+
+@mixin background-transition($time: 110ms) {
+  -webkit-transition: background-color $time linear;
+      -ms-transition: background-color $time linear;
+          transition: background-color $time linear;
+}
+
+.wrapper {
+  height: $board-size;
+  width: $board-size;
+  outline: $grid-border;
+  margin-top: (500px / 3);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid {
+  background-color: #34495e;
+  border: $grid-border;
+  cursor: pointer;
+  float: left;
+  height: $grid-size;
+  width: $grid-size;
+
+  &:hover:not(.filled) {
+    background-color: #34495e + 10%;
+    @include background-transition(150ms);
+  }
+}
+
+.filled {
+  @include background-transition();
+}
+
+.player2 {
+  background-color: #e74c3c;
+}
+
+.player1 {
+  background-color: #f1c40f;
+}

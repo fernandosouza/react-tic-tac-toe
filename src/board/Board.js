@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { isFunction } from 'underscore';
+import './board.css';
 
 /* *
  * Class that renders the game board.
