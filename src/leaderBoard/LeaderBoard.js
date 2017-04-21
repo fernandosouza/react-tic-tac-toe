@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Storage from '../storage/Storage';
+import { Link } from 'react-router-dom'
 import './leader-board.css';
 
 class LeaderBoard extends Component {
@@ -28,9 +29,23 @@ class LeaderBoard extends Component {
     }
     
     let  { winner } = this.props.match.params;
-    if (winner) {
-      return <h1>Congratulations, {winner}</h1>;
+
+    if (!winner) {
+      return<Link to="/">New game</Link>
     }
+
+    return (
+      <div>
+        <p>
+          Congratulations, <strong>{winner}</strong>!!!
+          Now you are in our leader board.
+        </p>
+
+        <p>Are you ready to <a href="" onClick={this.props.history.goBack}>
+            play again</a> aganst you partner or start a <Link to="/">
+            new game</Link>?</p>
+      </div>
+    );
   }
 
   /**
