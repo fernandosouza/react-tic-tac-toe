@@ -11,3 +11,15 @@ it('renders correctly', () => {
   ).toJSON();
   expect(leaderBoard).toMatchSnapshot();
 });
+
+it('renders congratulations message', () => {
+  const routerParam = {
+    params: {
+      winner: 'React TicTacToe'
+    }
+  };
+  const leaderBoard = renderer.create(
+    <LeaderBoard match={routerParam} />
+  ).toJSON();
+  expect(leaderBoard).toMatchSnapshot();
+});

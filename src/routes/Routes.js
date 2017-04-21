@@ -13,7 +13,8 @@ export default props => {
       <div>
         <Route exact path="/" component={Setup}/>
         <Route path="/firstPlayer/:firstPlayer/secondPlayer/:secondPlayer" component={App}/>
-        <Route path="/leaderboard" component={LeaderBoard}/>
+        <Route exact path="/leaderboard" component={LeaderBoard}/>
+        <Route path="/leaderboard/:winner" component={LeaderBoard}/>
       </div>
     </Router>
   );

@@ -18,13 +18,28 @@ class LeaderBoard extends Component {
   }
 
   /**
+   * Renders winner congratulation message.
+   * @private 
+   */
+  renderWinnerMessage_() {
+    if (!this.props.match) {
+      return;
+    }
+    
+    let  { winner } = this.props.match.params;
+    if (winner) {
+      return <h1>Congratulations, {winner}</h1>;
+    }
+  }
+
+  /**
    * @inheritdoc
    */
   render() {
     let leaderBoard = this.state.leaderBoard.reverse();
     return (
       <div>
-        <h1>Congratulations, {leaderBoard[0]}</h1>
+        {this.renderWinnerMessage_()}
         <ul>
         {leaderBoard.map((leader, key) => {
           return <li key={key}>{leader}</li>
