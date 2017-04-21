@@ -1,0 +1,19 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.leader-board {
+  font-size: 18px;
+  font-weight: 300;
+  width: 700px;
+  margin: 0 auto;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    border-bottom: 1px solid $base-color + 40%;
+    padding: 20px;
+  }
+}

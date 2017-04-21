@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Storage from '../storage/Storage';
+import './leader-board.css';
 
 class LeaderBoard extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class LeaderBoard extends Component {
   render() {
     let leaderBoard = this.state.leaderBoard.reverse();
     return (
-      <div>
+      <div className="leader-board">
         {this.renderWinnerMessage_()}
         <ul>
         {leaderBoard.map((leader, key) => {
