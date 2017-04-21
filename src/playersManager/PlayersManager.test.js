@@ -43,6 +43,13 @@ describe('PlayersManager', () => {
     expect(playersManager.getPlayers().length).toBe(3);
   });
 
+  it('should throws an error if no player configuration was passed to addPlayer', () => {
+    const playersManager = new PlayersManager(playersMock);
+    expect(() => {
+      playersManager.addPlayer();
+    }).toThrowError('Player configuration should be informed');
+  });
+
   it('should change the current player', () => {
     const playersManager = new PlayersManager(playersMock);
     let currentPlayer = playersManager.getCurrentPlayer();

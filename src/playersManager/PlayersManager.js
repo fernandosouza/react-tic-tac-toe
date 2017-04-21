@@ -16,9 +16,10 @@ class PlayersManager {
    * @param {Object} player The player data to create a new Player instance.
    **/
   addPlayer(player) {
-    if (player) {
-      this.players_.push(new Player(player));
+    if (!player) {
+      throw Error('Player configuration should be informed');
     }
+    this.players_.push(new Player(player));
   }
 
   /**
@@ -48,7 +49,6 @@ class PlayersManager {
   switchPlayer(index) {
     if (index !== 0 && this.players_.length < index) {
       throw Error('Player not found');
-      return;
     }
     this.currentPlayerIndex_ = index;
   }
