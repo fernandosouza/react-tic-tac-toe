@@ -63,4 +63,35 @@ describe('Game', () => {
 
     expect(onGameFinishMock.mock.calls.length).toBe(1);
   });
+
+  it('should pass the winner as argument to the registered callback', () => {
+    const onGameFinishMock = jest.fn();
+    let game = new TicTacToe('fernando', 'Souza', onGameFinishMock);
+
+    game.fillSlot(0);
+    game.fillSlot(3);
+    game.fillSlot(1);
+    game.fillSlot(4);
+    game.fillSlot(2);
+
+    expect(onGameFinishMock.mock.calls[0][0].name).toBe('fernando');
+  });
+
+  it('should pass undefined as argument to the registered callback if no one won', () => {
+    const onGameFinishMock = jest.fn();
+    let game = new TicTacToe('fernando', 'Souza', onGameFinishMock);
+
+    game.fillSlot(0);
+    game.fillSlot(2);
+    game.fillSlot(1);
+    game.fillSlot(3);
+    game.fillSlot(5);
+    game.fillSlot(7);
+    game.fillSlot(6);
+    game.fillSlot(8);
+    game.fillSlot(4);
+
+    expect(onGameFinishMock.mock.calls.length).toBe(1);
+    expect(onGameFinishMock.mock.calls[0][0]).toBe(undefined);
+  });
 });

@@ -66,12 +66,12 @@ class TicTacToe {
 
   /**
    * Setup the properly configuration when a game is finished.
+   * @param {Object|undefined} winner The user who won the game.
    * @private
    **/
-  endGame_() {
-    let currentPlayer = this.playersManager_.getCurrentPlayer();
+  endGame_(winner) {
     if (isFunction(this.onGameEnd)) {
-      this.onGameEnd(currentPlayer);
+      this.onGameEnd(winner);
     }
   }
 
@@ -100,8 +100,10 @@ class TicTacToe {
       this.board_.set(index, currentPlayer.id);
     }
 
-    if (this.hasWinner_() || this.board_.size === 9) {
-      this.endGame_();
+    let winner = this.getWinner_();
+
+    if (winner || this.board_.size === 9) {
+      this.endGame_(winner);
     }
     else {
       this.playersManager_.nextPlayerTurn();
@@ -109,14 +111,18 @@ class TicTacToe {
   }
 
   /**
-   * Checks all the possibilities of have a winner.
+   * Checks all the possibilities of have a winner and return the Player instance.
    * @private 
-   * @returns {boolean} Returns true if the game has a winner, otherwise, false.
+   * @returns {Object|undefined} Returns the currentPlayer if a winner is found
    **/
-  hasWinner_() {
-    return this.visitLines_() || this.visitColumns_() || 
+  getWinner_() {
+    let hasWinner = this.visitLines_() || this.visitColumns_() || 
       this.visitDiagonalUpLeft_() ||
       this.visitDiagonalUpRight_();
+
+    if (hasWinner) {
+      return this.playersManager_.getCurrentPlayer();
+    }
   }
 
   /**
