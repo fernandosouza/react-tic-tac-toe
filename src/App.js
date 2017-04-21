@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Board from './board/Board';
 import TicTacToe from './ticTacToe/TicTacToe';
 import Storage from './storage/Storage';
+import { Link } from 'react-router-dom'
 import './App.css';
 
 /**
@@ -57,9 +58,15 @@ class App extends Component {
    * @inheritdoc
    **/
   render() {
-    return <Board
-      fulfilledSlots={this.state.fulfileedSlots}
-      onSlotClick={this.onSlotClick_.bind(this)} />;
+    return (
+      <div>
+        <Board
+          fulfilledSlots={this.state.fulfileedSlots}
+          onSlotClick={this.onSlotClick_.bind(this)} />
+
+          <Link className="button new-game-button" to="/">New game</Link>
+      </div>
+    )
   }
 }
 
