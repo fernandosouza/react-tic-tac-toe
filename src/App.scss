@@ -1,0 +1,47 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+$base-color: #34495e;
+
+label {
+  display: block;
+}
+
+input {
+  @include background-transition(180ms, ease-in-out);
+
+  background: $base-color;
+  border: 1px solid $base-color + 15%;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 200;
+  font-size: 22px;
+  padding: 10px;
+
+  &:focus {
+    background: $base-color + 50%;
+  }
+}
+
+button {
+  @include background-transition(180ms, ease-in-out);
+
+  background-color: $success-color;
+  border-width: 0px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 200;
+  font-size: 22px;
+  margin-top: 25px;
+  padding: 10px 20px;
+
+  &:disabled {
+    background-color: $danger-color;
+    color: $danger-color - 60%;
+  }
+}
+
+form {
+  font-size: 22px;
+  font-weight: 200;
+}
