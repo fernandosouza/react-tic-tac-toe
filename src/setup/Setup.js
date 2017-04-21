@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './setup.css';
-import { Link } from 'react-router-dom';
 
 /**
  * Component responsible for getting players` name and passes it to the parent 
