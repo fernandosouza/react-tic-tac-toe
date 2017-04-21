@@ -22,7 +22,7 @@ class Setup extends Component {
    **/
   disableForm() {
     let { playerOneName, playerTwoName } = this.state;
-    return playerOneName === playerTwoName;
+    return !playerOneName || !playerTwoName || playerOneName === playerTwoName;
   }
 
   /**
