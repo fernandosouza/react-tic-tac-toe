@@ -1,9 +1,8 @@
 import PlayersManager from '../playersManager/PlayersManager';
 
 class TicTacToe {
-  constructor(playerOne, playerTwo) {
-    this.board_ = [];
-
+  constructor(playerOne, playerTwo, onGameEnd) {
+    this.board_ = new Map();
     this.playersManager_ = new PlayersManager([
       {
         id: 1,
@@ -16,6 +15,7 @@ class TicTacToe {
         class: 'player2'
       }
     ]);
+    this.onGameEnd = onGameEnd || function(){};
   }
 
   /**
@@ -59,7 +59,17 @@ class TicTacToe {
    **/
   checkUnMatch_(slotIndex) {
     let currentPlayer = this.playersManager_.getCurrentPlayer();
-    return (!this.board_[slotIndex] || this.board_[slotIndex] !== currentPlayer.id)
+    let slot = this.board_.get(slotIndex); 
+    return (!slot || slot !== currentPlayer.id)
+  }
+
+  /**
+   * Setup the properly configuration when a game is finished.
+   * @private
+   **/
+  endGame_() {
+    let currentPlayer = this.playersManager_.getCurrentPlayer();
+    this.onGameEnd(currentPlayer);
   }
 
   /**
@@ -73,20 +83,22 @@ class TicTacToe {
   }
 
   /**
-   * Fill a specific board slot. It also checks if there is a winner and if 
-   * it has not calls the next game turn.
+   * Fills a specific board slot and also checks if there is a winner, 
+   * if it has, do not call the next game turn and end the game.
    * @param {Number} index the slot index.
    **/
   fillSlot(index) {
-    if (this.board_[index]) {
+    if (this.board_.get(index)) {
       return;
     }
 
-    let currentPlayer = this.playersManager_.getCurrentPlayer();
-    this.board_[index] = currentPlayer.id;
+    if (this.board_.size < 9) {
+      let currentPlayer = this.playersManager_.getCurrentPlayer();
+      this.board_.set(index, currentPlayer.id);
+    }
 
-    if (this.findWinner_()) {
-      console.log('We have a winner!');
+    if (this.hasWinner_() || this.board_.size === 9) {
+      this.endGame_();
     }
     else {
       this.playersManager_.nextPlayerTurn();
@@ -98,7 +110,7 @@ class TicTacToe {
    * @private 
    * @returns {boolean} Returns true if the game has a winner, otherwise, false.
    **/
-  findWinner_() {
+  hasWinner_() {
     return this.visitLines_() || this.visitColumns_() || 
       this.visitDiagonalUpLeft_() ||
       this.visitDiagonalUpRight_();
