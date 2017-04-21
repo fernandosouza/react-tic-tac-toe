@@ -18,3 +18,5 @@ yarn-error.log*
 
 __snapshots__
 
+# ignoring css
+src/**/*.css
