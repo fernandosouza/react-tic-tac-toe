@@ -1,4 +1,5 @@
 import PlayersManager from '../playersManager/PlayersManager';
+import { isFunction } from 'underscore';
 
 class TicTacToe {
   constructor(playerOne, playerTwo, onGameEnd) {
@@ -15,7 +16,7 @@ class TicTacToe {
         class: 'player2'
       }
     ]);
-    this.onGameEnd = onGameEnd || function(){};
+    this.onGameEnd = onGameEnd;
   }
 
   /**
@@ -69,7 +70,9 @@ class TicTacToe {
    **/
   endGame_() {
     let currentPlayer = this.playersManager_.getCurrentPlayer();
-    this.onGameEnd(currentPlayer);
+    if (isFunction(this.onGameEnd)) {
+      this.onGameEnd(currentPlayer);
+    }
   }
 
   /**
