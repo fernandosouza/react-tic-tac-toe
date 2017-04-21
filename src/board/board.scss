@@ -1,12 +1,9 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
 $board-size: 500px;
 $grid-size: $board-size / 3;
 $grid-border: 1px solid rgba(255, 255, 255, .1);
-
-@mixin background-transition($time: 110ms) {
-  -webkit-transition: background-color $time linear;
-      -ms-transition: background-color $time linear;
-          transition: background-color $time linear;
-}
 
 .wrapper {
   height: $board-size;
@@ -18,7 +15,7 @@ $grid-border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .grid {
-  background-color: #34495e;
+  background-color: $base-color;
   border: $grid-border;
   cursor: pointer;
   float: left;
@@ -26,7 +23,7 @@ $grid-border: 1px solid rgba(255, 255, 255, .1);
   width: $grid-size;
 
   &:hover:not(.filled) {
-    background-color: #34495e + 10%;
+    background-color: $base-color + 10%;
     @include background-transition(150ms);
   }
 }
@@ -36,7 +33,7 @@ $grid-border: 1px solid rgba(255, 255, 255, .1);
 }
 
 .player2 {
-  background-color: #e74c3c;
+  background-color: $danger-color;
 }
 
 .player1 {

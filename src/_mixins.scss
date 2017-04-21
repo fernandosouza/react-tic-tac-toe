@@ -1,0 +1,5 @@
+@mixin background-transition($time: 110ms, $effect: linear) {
+  -webkit-transition: background-color $time $effect;
+      -ms-transition: background-color $time $effect;
+          transition: background-color $time $effect;
+}
