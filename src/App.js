@@ -38,8 +38,8 @@ class App extends Component {
   }
 
   /**
-   * Handles the click event on the each slot, checks if it's empty and if so, 
-   * fill it with the information of the current player. After that, changes 
+   * Handles the click event on the each slot and updates the fulfilledSlots
+   * state.
    * the turn to the next player.
    * @param {Number} key The Board Slot index.
    * @private 
