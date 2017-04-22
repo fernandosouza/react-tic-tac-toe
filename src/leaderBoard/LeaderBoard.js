@@ -52,7 +52,7 @@ class LeaderBoard extends Component {
    * @inheritdoc
    */
   render() {
-    let leaderBoard = this.state.leaderBoard.reverse();
+    let leaderBoard = this.state.leaderBoard;
     return (
       <div className="leader-board">
         <h1>Leaderboard</h1>
