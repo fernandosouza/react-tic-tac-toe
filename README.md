@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/fernandosouza/react-tic-tac-toe.svg?branch=master)](https://travis-ci.org/fernandosouza/react-tic-tac-toe)
+
 Steps to run the project.
 
 - You need to install all dependencies by running `npm install` for that.
