@@ -30,10 +30,6 @@ class App extends Component {
    **/
   onGameEnd_(winner) {
     if (winner) {
-      this.setState({
-        winner: winner.name
-      });
-
       let gameLeaderBoard = this.storage_.getData();
       this.storage_.update([winner.name, ...gameLeaderBoard]);
       this.props.history.push(`/leaderboard/${winner.name}`);
