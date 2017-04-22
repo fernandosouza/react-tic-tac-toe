@@ -23,11 +23,7 @@ class LeaderBoard extends Component {
    * Renders winner congratulation message.
    * @private 
    */
-  renderWinnerMessage_() {
-    if (!this.props.match) {
-      return;
-    }
-    
+  renderWinnerMessage_() {    
     let  { winner } = this.props.match.params;
 
     if (!winner) {
