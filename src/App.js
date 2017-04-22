@@ -15,7 +15,7 @@ class App extends Component {
     super(prop);
     
     this.state = {
-      fulfileedSlots: []
+      fulfilledSlots: []
     }
 
     let { firstPlayer, secondPlayer } = this.props.match.params;
@@ -47,7 +47,7 @@ class App extends Component {
   onSlotClick_(key) {
     this.game_.fillSlot(key);
     this.setState({
-      fulfileedSlots: this.game_.getBoard()
+      fulfilledSlots: this.game_.getBoard()
     });
   }
 
@@ -58,7 +58,7 @@ class App extends Component {
     return (
       <div className="tic-tac-toe-app">
         <Board
-          fulfilledSlots={this.state.fulfileedSlots}
+          fulfilledSlots={this.state.fulfilledSlots}
           onSlotClick={this.onSlotClick_.bind(this)} />
 
           <Link className="button new-game-button" to="/">New game</Link>
