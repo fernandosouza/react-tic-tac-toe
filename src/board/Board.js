@@ -32,7 +32,7 @@ class Board extends PureComponent {
   }
 
   /**
-   * Renders board slots that will be filled by gamers' pieces.
+   * Renders board slots that will be fufilled by gamers' pieces.
    * @private 
    */
   renderSlots_() {
@@ -54,8 +54,7 @@ class Board extends PureComponent {
   }
 
   /**
-   * Renders the entire Board component.
-   * @private 
+   * @inheritdoc  
    */
   render() {
     return (
