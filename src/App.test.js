@@ -17,18 +17,18 @@ it('renders without crashing', () => {
 
 it('should be able to click on a slot', () => {
   const wrapper = mount(<Router><App match={ {params} } /></Router>);
-  wrapper.find('.grid').at(0).simulate('click');
-  expect(wrapper.find('.grid').at(0).hasClass('filled')).toBe(true);
+  wrapper.find('.slot').at(0).simulate('click');
+  expect(wrapper.find('.slot').at(0).hasClass('filled')).toBe(true);
 });
 
 it('should be able to react to game end', () => {
   let spy = App.prototype.onGameEnd_ = jest.fn();
   const wrapper = mount(<Router><App match={ {params} } /></Router>);
-  wrapper.find('.grid').at(0).simulate('click');
-  wrapper.find('.grid').at(3).simulate('click');
-  wrapper.find('.grid').at(1).simulate('click');
-  wrapper.find('.grid').at(4).simulate('click');
-  wrapper.find('.grid').at(2).simulate('click');
+  wrapper.find('.slot').at(0).simulate('click');
+  wrapper.find('.slot').at(3).simulate('click');
+  wrapper.find('.slot').at(1).simulate('click');
+  wrapper.find('.slot').at(4).simulate('click');
+  wrapper.find('.slot').at(2).simulate('click');
   expect(spy.mock.calls.length).toBe(1);
   spy.mockReset();
 });

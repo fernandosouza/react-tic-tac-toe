@@ -46,7 +46,7 @@ class Board extends PureComponent {
 
       return (
         <div
-          className={`grid grid-${key}${fulfilledClass||''}`}
+          className={`slot slot-${key}${fulfilledClass||''}`}
           onClick={this.slotClickHandler_.bind(this, key)}
           key={key}></div>
       );
@@ -58,7 +58,7 @@ class Board extends PureComponent {
    */
   render() {
     return (
-      <div className="wrapper">
+      <div className="board">
         {this.renderSlots_()}
       </div>
     );
