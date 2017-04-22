@@ -38,7 +38,7 @@ class LeaderBoard extends Component {
       <div>
         <p>
           Congratulations, <strong>{winner}</strong>!!!
-          Now you are in our leader board.
+          Now you are in our leaderboard.
         </p>
 
         <p>Are you ready to <a href="" onClick={this.props.history.goBack}>
@@ -55,7 +55,7 @@ class LeaderBoard extends Component {
     let leaderBoard = this.state.leaderBoard.reverse();
     return (
       <div className="leader-board">
-        <h1>Leader Board</h1>
+        <h1>Leaderboard</h1>
         {this.renderWinnerMessage_()}
         <ul>
         {leaderBoard.map((leader, key) => {
