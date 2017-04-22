@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { mount } from 'enzyme';
+import { MemoryRouter as Router } from 'react-router-dom';
 
 const params = {
   firstPlayer: 'Fernando',
@@ -11,18 +12,18 @@ const params = {
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App match={ {params} } />, div);
+  ReactDOM.render(<Router><App match={ {params} } /></Router>, div);
 });
 
 it('should be able to click on a slot', () => {
-  const wrapper = mount(<App match={ {params} } />);
+  const wrapper = mount(<Router><App match={ {params} } /></Router>);
   wrapper.find('.grid').at(0).simulate('click');
   expect(wrapper.find('.grid').at(0).hasClass('filled')).toBe(true);
 });
 
 it('should be able to react to game end', () => {
   let spy = App.prototype.onGameEnd_ = jest.fn();
-  const wrapper = mount(<App match={ {params} } />);
+  const wrapper = mount(<Router><App match={ {params} } /></Router>);
   wrapper.find('.grid').at(0).simulate('click');
   wrapper.find('.grid').at(3).simulate('click');
   wrapper.find('.grid').at(1).simulate('click');

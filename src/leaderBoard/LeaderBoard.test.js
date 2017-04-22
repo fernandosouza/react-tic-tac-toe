@@ -2,12 +2,13 @@ import '../../testHelpers/LocalStorageMock';
 import React from 'react';
 import LeaderBoard from './LeaderBoard';
 import renderer from 'react-test-renderer';
+import { MemoryRouter as Router } from 'react-router-dom';
 
 localStorage.setItem('gameLeaderBoard', '["Fernando", "Souza"]');
 
 it('renders correctly', () => {
   const leaderBoard = renderer.create(
-    <LeaderBoard />
+    <Router><LeaderBoard /></Router>
   ).toJSON();
   expect(leaderBoard).toMatchSnapshot();
 });
@@ -19,7 +20,7 @@ it('renders congratulations message', () => {
     }
   };
   const leaderBoard = renderer.create(
-    <LeaderBoard match={routerParam} />
+    <Router><LeaderBoard history={ { goback: ()=>{} } } match={routerParam} /></Router>
   ).toJSON();
   expect(leaderBoard).toMatchSnapshot();
 });
