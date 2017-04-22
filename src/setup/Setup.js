@@ -70,14 +70,14 @@ class Setup extends Component {
     return (
       <div className="tic-tac-toe-app">
         <form className="setup-page" onSubmit={this.onFormSubmit_.bind(this)}>
-          <label htmlFor="playerOne">Player 1 - Name</label>
+          <label htmlFor="playerOne">Player 1</label>
           <input
             type="text"
             value={this.state.playerOneName}
             onChange={this.onPlayerOneNameChange_.bind(this)}
             id="playerOne" />
 
-          <label htmlFor="playerTwo">Player 2 - Name</label>
+          <label htmlFor="playerTwo">Player 2</label>
           <input
             type="text"
             value={this.state.playerTwoName}
