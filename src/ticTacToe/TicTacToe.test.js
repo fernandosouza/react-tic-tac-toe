@@ -61,7 +61,7 @@ describe('Game', () => {
     game.fillSlot(4);
     game.fillSlot(2);
 
-    expect(onGameFinishMock.mock.calls.length).toBe(1);
+    expect(onGameFinishMock.mock.calls).toHaveLength(1);
   });
 
   it('should pass the winner as argument to the registered callback', () => {
@@ -74,7 +74,7 @@ describe('Game', () => {
     game.fillSlot(4);
     game.fillSlot(2);
 
-    expect(onGameFinishMock.mock.calls[0][0].name).toBe('fernando');
+    expect(onGameFinishMock.mock.calls[0][0]).toHaveProperty('name', 'fernando');
   });
 
   it('should pass undefined as argument to the registered callback if no one won', () => {
@@ -91,7 +91,7 @@ describe('Game', () => {
     game.fillSlot(8);
     game.fillSlot(4);
 
-    expect(onGameFinishMock.mock.calls.length).toBe(1);
-    expect(onGameFinishMock.mock.calls[0][0]).toBe(undefined);
+    expect(onGameFinishMock.mock.calls).toHaveLength(1);
+    expect(onGameFinishMock.mock.calls[0][0]).toBeUndefined();
   });
 });
