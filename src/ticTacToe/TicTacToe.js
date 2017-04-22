@@ -136,10 +136,8 @@ class TicTacToe {
   }
 
   /**
-   * Logic to determine if a given slot is valid or not based on players. 
-   * There is only two invalid cases. If the slot is empty or if the slot 
-   * content doesn't match with the reference of the current player.
-   * @returns {Array<Number>} The game board.
+   * Returns the Board map.
+   * @returns {Map<Object>} The game board.
    **/
   getBoard() {
     return this.board_;
