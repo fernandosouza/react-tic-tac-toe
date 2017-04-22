@@ -24,7 +24,8 @@ class App extends Component {
   }
 
   /**
-   * Callback method that will be called when the game is finished.
+   * Callback method that will be called when the game is finished. It updates
+   * the local storage with the new winner and go to the Leaderboard page.
    * @param {Object} winner The Player object.
    * @private 
    **/
