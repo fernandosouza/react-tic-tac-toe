@@ -28,7 +28,7 @@ describe('Board', () => {
     const callbackMock = jest.fn();
     const wrapper = shallow(<Board onSlotClick={callbackMock} />);
 
-    wrapper.find('.slot').at(0).simulate('click');
+    wrapper.find('.board-slot').at(0).simulate('click');
     expect(callbackMock.mock.calls.length).toBe(1);
   });
 
@@ -36,7 +36,7 @@ describe('Board', () => {
     const callbackMock = jest.fn();
     const wrapper = shallow(<Board onSlotClick={callbackMock} />);
 
-    wrapper.find('.slot').at(1).simulate('click');
+    wrapper.find('.board-slot').at(1).simulate('click');
     expect(callbackMock.mock.calls[0][0]).toBe(1);
   });
 });

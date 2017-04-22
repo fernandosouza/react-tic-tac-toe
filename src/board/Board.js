@@ -41,12 +41,12 @@ class Board extends PureComponent {
       let fulfilledClass;
 
       if (fulfilledSlots instanceof Map && fulfilledSlots.get(key)) {
-        fulfilledClass = ` filled player${fulfilledSlots.get(key)}`
+        fulfilledClass = ` fulfilled player${fulfilledSlots.get(key)}`
       }
 
       return (
         <div
-          className={`slot slot-${key}${fulfilledClass||''}`}
+          className={`board-slot ${fulfilledClass||''}`}
           onClick={this.slotClickHandler_.bind(this, key)}
           key={key}></div>
       );

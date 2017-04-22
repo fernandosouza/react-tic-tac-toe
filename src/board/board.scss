@@ -1,33 +1,41 @@
 @import "../variables.scss";
 @import "../mixins.scss";
 
-$board-size: 500px;
-$grid-size: $board-size / 3;
 $grid-border: 1px solid rgba(255, 255, 255, .1);
 
-.board {
-  display: flex;
-  flex-wrap: wrap;
-  height: $board-size;
-  width: $board-size;
-  outline: $grid-border;
-}
+@mixin build-board ($board-size: 500px) {
+  $grid-size: $board-size / 3;
 
-.slot {
-  background-color: $base-color;
-  border: $grid-border;
-  cursor: pointer;
-  height: $grid-size;
-  width: $grid-size;
+  .board {
+    display: flex;
+    flex-wrap: wrap;
+    height: $board-size;
+    width: $board-size;
+    outline: $grid-border;
 
-  &:hover:not(.filled) {
-    background-color: $base-color + 10%;
-    @include background-transition(150ms);
+    .fulfilled {
+      @include background-transition();
+    }
+  }
+
+  .board-slot {
+    background-color: $base-color;
+    border: $grid-border;
+    cursor: pointer;
+    height: $grid-size;
+    width: $grid-size;
+
+    &:hover:not(.fulfilled) {
+      background-color: $base-color + 10%;
+      @include background-transition(150ms);
+    }
   }
 }
 
-.filled {
-  @include background-transition();
+@include build-board(200px);
+
+@media only screen and (min-device-width : 768px) {
+  @include build-board();  
 }
 
 .player2 {
