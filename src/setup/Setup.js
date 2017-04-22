@@ -3,7 +3,7 @@ import './setup.css';
 
 /**
  * Component responsible for getting players` name and passes it to the parent 
- * component through a function named `onFinishSetup` in prop.
+ * component through a function named `onFinishSetup`.
  **/
 class Setup extends Component {
   constructor(prop) {
@@ -16,7 +16,7 @@ class Setup extends Component {
   }
 
   /**
-   * Express conditions to disable the form submission.
+   * Express conditions to disable form submission.
    * @returns {boolean} true for disable and false for enable
    * @private 
    **/
@@ -26,7 +26,7 @@ class Setup extends Component {
   }
 
   /**
-   * Listens to the form submission and informs the players` name to the
+   * Listens to the form submission and informs players` name to the
    * parent component.
    * @param {event} event The event object
    * @private 
