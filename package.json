@@ -5,12 +5,15 @@
   "homepage": "https://fernandosouza.github.io/react-tic-tac-toe/",
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-router-dom": "^4.1.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "enzyme": "^2.8.2",
     "gh-pages": "^0.12.0",
     "node-sass": "^4.5.2",
+    "react-router-test-context": "^0.1.0",
     "react-scripts": "0.9.5",
     "react-test-renderer": "^15.5.4"
   },
