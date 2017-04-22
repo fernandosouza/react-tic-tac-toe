@@ -21,10 +21,10 @@ class TicTacToe {
   }
 
   /**
-   * Walks through Board column looking for unmatched slots in order to 
-   * determine if the current player got a column matching. Returns true if 
-   * it has, otherwise returns false.
-   * @param {Number} column The Column index.
+   * Checks if there is any matched column by a given player.
+   * @param {Number} playerId The player id to be checked.
+   * @returns {boolean} Returns true if a matched column is found, otherwise
+   * it returns false.
    * @private 
    **/
   checkColumns_(playerId) {
@@ -41,6 +41,7 @@ class TicTacToe {
   /**
    * Checks if the diagonal line starting from the top-left slot has been 
    * fulfilled by the current player.
+   * @param {Number} playerId The player id to be checked.
    * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
    * a player, otherwise, false.
    * @private
@@ -56,6 +57,7 @@ class TicTacToe {
   /**
    * Checks if the diagonal line starting from the top-right slot has been 
    * fulfilled by the current player.
+   * @param {Number} playerId The player id to be checked.
    * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
    * a player, otherwise, false.
    * @private
@@ -72,7 +74,8 @@ class TicTacToe {
    * Walks through Board lines looking for unmatched slots in order to 
    * determine if the current player got a line matching. Returns true if 
    * it has, otherwise returns false.
-   * @param {Number} line The Line index.
+   * @param {Number} playerId The player id to be checked
+   * @returns {boolean} Returns true if a matched line is found, otherwise, false. 
    * @private 
    **/
   checkLines_(playerId) {
@@ -88,7 +91,8 @@ class TicTacToe {
 
   /**
    * Checks if the slot was filled by an given player.
-   * @param {Object|undefined} winner The user who won the game.
+   * @param {Number} index The slot index.
+   * @param {Number} currentPlayerId The player id.
    * @private
    **/
   checkSlot_(index, currentPlayerId) {
