@@ -17,6 +17,7 @@ class TicTacToe {
       }
     ]);
     this.onGameEnd = onGameEnd;
+    this.currentPlayer_ = this.playersManager_.getCurrentPlayer();
   }
 
   /**
@@ -26,13 +27,15 @@ class TicTacToe {
    * @param {Number} column The Column index.
    * @private 
    **/
-  checkColumn_(column) {
-    for (let j = column; j < column + 9; j += 3) {
-      if (this.checkUnMatch_(j)) {
-        return false;
-      }
-    }
-    return true;
+  checkColumns_(playerId) {
+    return (
+      (this.checkSlot_(0, playerId) && this.checkSlot_(3, playerId) 
+        && this.checkSlot_(6, playerId)) ||
+      (this.checkSlot_(1, playerId) && this.checkSlot_(4, playerId) 
+        && this.checkSlot_(7, playerId)) ||
+      (this.checkSlot_(2, playerId) && this.checkSlot_(5, playerId) 
+        && this.checkSlot_(8, playerId))
+    );
   }
 
   /**
@@ -42,26 +45,24 @@ class TicTacToe {
    * @param {Number} line The Line index.
    * @private 
    **/
-  checkLine_(line) {
-    for (let j = line; j < line + 3; j++) {
-      if (this.checkUnMatch_(j)) {
-        return false;
-      }
-    }
-    return true;
+  checkLines_(playerId) {
+    return (
+      (this.checkSlot_(0, playerId) && this.checkSlot_(1, playerId) 
+        && this.checkSlot_(2, playerId)) ||
+      (this.checkSlot_(3, playerId) && this.checkSlot_(4, playerId) 
+        && this.checkSlot_(5, playerId)) ||
+      (this.checkSlot_(6, playerId) && this.checkSlot_(7, playerId) 
+        && this.checkSlot_(8, playerId))
+    );
   }
 
   /**
-   * Logic to determine if a given slot is valid or not based on players. 
-   * There is only two invalid cases. If the slot is empty or if the slot 
-   * content doesn't match with the reference of the current player.
-   * @param {Number} slotIndex The slot index.
-   * @private 
+   * Checks if the slot was filled by an given player.
+   * @param {Object|undefined} winner The user who won the game.
+   * @private
    **/
-  checkUnMatch_(slotIndex) {
-    let currentPlayer = this.playersManager_.getCurrentPlayer();
-    let slot = this.board_.get(slotIndex); 
-    return (!slot || slot !== currentPlayer.id)
+  checkSlot_(index, currentPlayerId) {
+    return this.board_.get(index) === currentPlayerId;
   }
 
   /**
@@ -96,7 +97,7 @@ class TicTacToe {
     }
 
     if (this.board_.size < 9) {
-      let currentPlayer = this.playersManager_.getCurrentPlayer();
+      let currentPlayer = this.currentPlayer_;
       this.board_.set(index, currentPlayer.id);
     }
 
@@ -106,7 +107,7 @@ class TicTacToe {
       this.endGame_(winner);
     }
     else {
-      this.playersManager_.nextPlayerTurn();
+      this.currentPlayer_ = this.playersManager_.nextPlayerTurn();
     }
   }
 
@@ -116,28 +117,14 @@ class TicTacToe {
    * @private 
    **/
   getWinner_() {
-    let hasWinner = this.visitLines_() || this.visitColumns_() || 
-      this.visitDiagonalUpLeft_() ||
-      this.visitDiagonalUpRight_();
+    let playerId = this.currentPlayer_.id;
+    let hasWinner = this.checkLines_(playerId) || this.checkColumns_(playerId) || 
+      this.checkDiagonalUpLeft_(playerId) ||
+      this.checkDiagonalUpRight_(playerId);
 
     if (hasWinner) {
-      return this.playersManager_.getCurrentPlayer();
+      return this.currentPlayer_;
     }
-  }
-
-  /**
-   * Walks through all Board columns looking for a matched one. 
-   * @returns {boolean} Returns true if any column has been fulfilled by a player, 
-   * otherwise, false.
-   * @private
-   **/
-  visitColumns_() {
-    for (let i = 0; i < 3; i++) {
-      if (this.checkColumn_(i)) {
-        return true;
-      }
-    }
-    return false;
   }
 
   /**
@@ -147,13 +134,12 @@ class TicTacToe {
    * a player, otherwise, false.
    * @private
    **/
-  visitDiagonalUpLeft_() {
-    for (let i = 0; i < 9; i += 4) {
-      if (this.checkUnMatch_(i)) {
-        return false;
-      }
-    }
-    return true;
+  checkDiagonalUpLeft_(playerId) {
+    return (
+      this.checkSlot_(0, playerId) && 
+      this.checkSlot_(4, playerId) &&
+      this.checkSlot_(8, playerId)
+    );
   }
   
   /**
@@ -163,28 +149,12 @@ class TicTacToe {
    * a player, otherwise, false.
    * @private
    **/
-  visitDiagonalUpRight_() {
-    for (let i = 2; i < 7; i += 2) {
-      if (this.checkUnMatch_(i)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  /**
-   * Walks through all Board lines looking for a matched one. 
-   * @returns {boolean} Returns true if any column has been fulfilled by a player, 
-   * otherwise, false.
-   * @private
-   **/
-  visitLines_(callBack) {
-    for (let i = 0; i < 9; i += 3) {
-      if (this.checkLine_(i)) {
-        return true;
-      }
-    }
-    return false;
+  checkDiagonalUpRight_(playerId) {
+    return (
+      this.checkSlot_(2, playerId) &&
+      this.checkSlot_(4, playerId) && 
+      this.checkSlot_(6, playerId)
+    );
   }
 }
 

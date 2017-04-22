@@ -51,6 +51,7 @@ class PlayersManager {
       throw Error('Player not found');
     }
     this.currentPlayerIndex_ = index;
+    return this.players_[index];
   }
 
   /**
@@ -65,7 +66,7 @@ class PlayersManager {
       currentPlayerIndex = 0;
     }
 
-    this.switchPlayer(currentPlayerIndex);
+    return this.switchPlayer(currentPlayerIndex);
   }
 }
 
