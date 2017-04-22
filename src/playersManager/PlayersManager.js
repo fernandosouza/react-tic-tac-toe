@@ -43,18 +43,6 @@ class PlayersManager {
   }
 
   /**
-   * Changes the current player by providing its index.
-   * @param {number} index The player index.
-   **/
-  switchPlayer(index) {
-    if (index !== 0 && this.players_.length < index) {
-      throw Error('Player not found');
-    }
-    this.currentPlayerIndex_ = index;
-    return this.players_[index];
-  }
-
-  /**
    * Changes the game turn to the next available player. Select the first player
    * of the array if no next one is found.
    **/
@@ -67,6 +55,18 @@ class PlayersManager {
     }
 
     return this.switchPlayer(currentPlayerIndex);
+  }
+
+  /**
+   * Changes the current player by providing its index.
+   * @param {number} index The player index.
+   **/
+  switchPlayer(index) {
+    if (index !== 0 && this.players_.length < index) {
+      throw Error('Player not found');
+    }
+    this.currentPlayerIndex_ = index;
+    return this.players_[index];
   }
 }
 

@@ -39,6 +39,36 @@ class TicTacToe {
   }
 
   /**
+   * Checks if the diagonal line starting from the top-left slot has been 
+   * fulfilled by the current player.
+   * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
+   * a player, otherwise, false.
+   * @private
+   **/
+  checkDiagonalUpLeft_(playerId) {
+    return (
+      this.checkSlot_(0, playerId) && 
+      this.checkSlot_(4, playerId) &&
+      this.checkSlot_(8, playerId)
+    );
+  }
+
+  /**
+   * Checks if the diagonal line starting from the top-right slot has been 
+   * fulfilled by the current player.
+   * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
+   * a player, otherwise, false.
+   * @private
+   **/
+  checkDiagonalUpRight_(playerId) {
+    return (
+      this.checkSlot_(2, playerId) &&
+      this.checkSlot_(4, playerId) && 
+      this.checkSlot_(6, playerId)
+    );
+  }
+
+  /**
    * Walks through Board lines looking for unmatched slots in order to 
    * determine if the current player got a line matching. Returns true if 
    * it has, otherwise returns false.
@@ -77,16 +107,6 @@ class TicTacToe {
   }
 
   /**
-   * Logic to determine if a given slot is valid or not based on players. 
-   * There is only two invalid cases. If the slot is empty or if the slot 
-   * content doesn't match with the reference of the current player.
-   * @returns {Array<Number>} The game board.
-   **/
-  getBoard() {
-    return this.board_;
-  }
-
-  /**
    * Fills a specific board slot and also checks if there is a winner, 
    * if it has, do not call the next game turn and end the game.
    * @param {Number} index the slot index.
@@ -112,6 +132,16 @@ class TicTacToe {
   }
 
   /**
+   * Logic to determine if a given slot is valid or not based on players. 
+   * There is only two invalid cases. If the slot is empty or if the slot 
+   * content doesn't match with the reference of the current player.
+   * @returns {Array<Number>} The game board.
+   **/
+  getBoard() {
+    return this.board_;
+  }
+
+  /**
    * Checks all the possibilities of have a winner and return the Player instance.
    * @returns {Object|undefined} Returns the currentPlayer if a winner is found
    * @private 
@@ -125,36 +155,6 @@ class TicTacToe {
     if (hasWinner) {
       return this.currentPlayer_;
     }
-  }
-
-  /**
-   * Checks if the diagonal line starting from the top-left slot has been 
-   * fulfilled by the current player.
-   * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
-   * a player, otherwise, false.
-   * @private
-   **/
-  checkDiagonalUpLeft_(playerId) {
-    return (
-      this.checkSlot_(0, playerId) && 
-      this.checkSlot_(4, playerId) &&
-      this.checkSlot_(8, playerId)
-    );
-  }
-  
-  /**
-   * Checks if the diagonal line starting from the top-right slot has been 
-   * fulfilled by the current player.
-   * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
-   * a player, otherwise, false.
-   * @private
-   **/
-  checkDiagonalUpRight_(playerId) {
-    return (
-      this.checkSlot_(2, playerId) &&
-      this.checkSlot_(4, playerId) && 
-      this.checkSlot_(6, playerId)
-    );
   }
 }
 
