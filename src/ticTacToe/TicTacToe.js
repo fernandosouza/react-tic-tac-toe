@@ -54,7 +54,7 @@ class TicTacToe {
   /**
    * Logic to determine if a given slot is valid or not based on players. 
    * There is only two invalid cases. If the slot is empty or if the slot 
-   * content doesn't match with the reference of the current player .
+   * content doesn't match with the reference of the current player.
    * @param {Number} slotIndex The slot index.
    * @private 
    **/
@@ -65,7 +65,7 @@ class TicTacToe {
   }
 
   /**
-   * Setup the properly configuration when a game is finished.
+   * Calls the onGameEnd listener callback with the winner's instance.
    * @param {Object|undefined} winner The user who won the game.
    * @private
    **/
@@ -112,8 +112,8 @@ class TicTacToe {
 
   /**
    * Checks all the possibilities of have a winner and return the Player instance.
-   * @private 
    * @returns {Object|undefined} Returns the currentPlayer if a winner is found
+   * @private 
    **/
   getWinner_() {
     let hasWinner = this.visitLines_() || this.visitColumns_() || 
@@ -127,9 +127,9 @@ class TicTacToe {
 
   /**
    * Walks through all Board columns looking for a matched one. 
-   * @private
    * @returns {boolean} Returns true if any column has been fulfilled by a player, 
    * otherwise, false.
+   * @private
    **/
   visitColumns_() {
     for (let i = 0; i < 3; i++) {
@@ -143,9 +143,9 @@ class TicTacToe {
   /**
    * Checks if the diagonal line starting from the top-left slot has been 
    * fulfilled by the current player.
-   * @private
    * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
    * a player, otherwise, false.
+   * @private
    **/
   visitDiagonalUpLeft_() {
     for (let i = 0; i < 9; i += 4) {
@@ -159,9 +159,9 @@ class TicTacToe {
   /**
    * Checks if the diagonal line starting from the top-right slot has been 
    * fulfilled by the current player.
-   * @private
    * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
    * a player, otherwise, false.
+   * @private
    **/
   visitDiagonalUpRight_() {
     for (let i = 2; i < 7; i += 2) {
@@ -174,9 +174,9 @@ class TicTacToe {
 
   /**
    * Walks through all Board lines looking for a matched one. 
-   * @private
    * @returns {boolean} Returns true if any column has been fulfilled by a player, 
    * otherwise, false.
+   * @private
    **/
   visitLines_(callBack) {
     for (let i = 0; i < 9; i += 3) {
