@@ -68,23 +68,25 @@ class Setup extends Component {
     let disabled = this.disableForm();
 
     return (
-      <form className="setup-page" onSubmit={this.onFormSubmit_.bind(this)}>
-        <label htmlFor="playerOne">Player 1 - Name</label>
-        <input
-          type="text"
-          value={this.state.playerOneName}
-          onChange={this.onPlayerOneNameChange_.bind(this)}
-          id="playerOne" />
+      <div className="tic-tac-toe-app">
+        <form className="setup-page" onSubmit={this.onFormSubmit_.bind(this)}>
+          <label htmlFor="playerOne">Player 1 - Name</label>
+          <input
+            type="text"
+            value={this.state.playerOneName}
+            onChange={this.onPlayerOneNameChange_.bind(this)}
+            id="playerOne" />
 
-        <label htmlFor="playerTwo">Player 2 - Name</label>
-        <input
-          type="text"
-          value={this.state.playerTwoName}
-          onChange={this.onPlayerTwoNameChange_.bind(this)}
-          id="playerTwo" />
+          <label htmlFor="playerTwo">Player 2 - Name</label>
+          <input
+            type="text"
+            value={this.state.playerTwoName}
+            onChange={this.onPlayerTwoNameChange_.bind(this)}
+            id="playerTwo" />
 
-          <button disabled={disabled}> Start! </button>
-      </form>
+            <button disabled={disabled}> Start! </button>
+        </form>
+      </div>
     );
   }
 }

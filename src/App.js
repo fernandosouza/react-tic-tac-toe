@@ -59,7 +59,7 @@ class App extends Component {
    **/
   render() {
     return (
-      <div>
+      <div className="tic-tac-toe-app">
         <Board
           fulfilledSlots={this.state.fulfileedSlots}
           onSlotClick={this.onSlotClick_.bind(this)} />
