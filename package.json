@@ -1,10 +1,14 @@
 {
   "name": "tic-tac-toe",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "homepage": "https://fernandosouza.github.io/react-tic-tac-toe/",
   "author": "Fernando Souza <nandosouzafilho@gmail.com> (http://github.com/fernandosouza/)",
-  "keywords": ["react", "game", "tic-tac-toe"],
+  "keywords": [
+    "react",
+    "game",
+    "tic-tac-toe"
+  ],
   "bugs": "https://github.com/fernandosouza/react-tic-tac-toe/issues",
   "dependencies": {
     "react": "^15.5.4",
