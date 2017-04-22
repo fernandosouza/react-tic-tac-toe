@@ -10,8 +10,8 @@ class Board extends PureComponent {
   /**
    * Creates a Board.
    */
-  constructor(opt) {
-    super(opt);
+  constructor(props) {
+    super(props);
     this.state = {
       slots: Array.apply(null, {length: 9}).map(Number.call, Number)
     };

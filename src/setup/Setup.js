@@ -6,8 +6,8 @@ import './setup.css';
  * component through a function named `onFinishSetup`.
  **/
 class Setup extends Component {
-  constructor(prop) {
-    super(prop);
+  constructor(props) {
+    super(props);
 
     this.state = {
       playerOneName: '',
