@@ -34,10 +34,18 @@ class PlayersManager {
     });
   }
 
+  /**
+   * Returns the current player.
+   * @returns {Object} Player
+   **/
   getCurrentPlayer() {
     return this.players_[this.currentPlayerIndex_];
   }
 
+  /**
+   * Returns the list of players. 
+   * @returns {Array<Object>} The list of players
+   **/
   getPlayers() {
     return [...this.players_];
   }
