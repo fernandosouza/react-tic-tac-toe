@@ -1,9 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import App from '../App';
 import Setup from '../setup/Setup';
 import LeaderBoard from '../leaderBoard/LeaderBoard';
