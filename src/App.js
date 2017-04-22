@@ -7,7 +7,7 @@ import './App.css';
 
 /**
  * Initialize the game asking for players information. Manage players
- * turns and set in the board fulfilled slots.
+ * turns and set in the board filled slots.
  * @author Fernando Souza nandosouzafilho@gmail.com
  **/
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
     super(prop);
     
     this.state = {
-      fulfilledSlots: []
+      filledSlots: []
     }
 
     let { firstPlayer, secondPlayer } = this.props.match.params;
@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   /**
-   * Handles the click event on the each slot and updates the fulfilledSlots
+   * Handles the click event on the each slot and updates the filledSlots
    * state.
    * the turn to the next player.
    * @param {Number} key The Board Slot index.
@@ -47,7 +47,7 @@ class App extends Component {
   onSlotClick_(key) {
     this.game_.fillSlot(key);
     this.setState({
-      fulfilledSlots: this.game_.getBoard()
+      filledSlots: this.game_.getBoard()
     });
   }
 
@@ -58,7 +58,7 @@ class App extends Component {
     return (
       <div className="tic-tac-toe-app">
         <Board
-          fulfilledSlots={this.state.fulfilledSlots}
+          filledSlots={this.state.filledSlots}
           onSlotClick={this.onSlotClick_.bind(this)} />
 
           <Link className="button new-game-button" to="/">New game</Link>

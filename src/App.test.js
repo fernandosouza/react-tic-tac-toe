@@ -18,7 +18,7 @@ it('renders without crashing', () => {
 it('should be able to click on a slot', () => {
   const wrapper = mount(<Router><App match={ {params} } /></Router>);
   wrapper.find('.board-slot').at(0).simulate('click');
-  expect(wrapper.find('.board-slot').at(0).hasClass('fulfilled')).toBe(true);
+  expect(wrapper.find('.board-slot').at(0).hasClass('filled')).toBe(true);
 });
 
 it('should be able to react to game end', () => {

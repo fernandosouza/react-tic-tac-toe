@@ -40,9 +40,9 @@ class TicTacToe {
 
   /**
    * Checks if the diagonal line starting from the top-left slot has been 
-   * fulfilled by the current player.
+   * filled by the current player.
    * @param {Number} playerId The player id to be checked.
-   * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
+   * @returns {boolean} Returns true if the diagonal line has been filled by 
    * a player, otherwise, false.
    * @private
    **/
@@ -56,9 +56,9 @@ class TicTacToe {
 
   /**
    * Checks if the diagonal line starting from the top-right slot has been 
-   * fulfilled by the current player.
+   * filled by the current player.
    * @param {Number} playerId The player id to be checked.
-   * @returns {boolean} Returns true if the diagonal line has been fulfilled by 
+   * @returns {boolean} Returns true if the diagonal line has been filled by 
    * a player, otherwise, false.
    * @private
    **/
@@ -136,7 +136,7 @@ class TicTacToe {
   }
 
   /**
-   * Returns the Board map.
+   * Returns the list of filled slots.
    * @returns {Map<Object>} The game board.
    **/
   getBoard() {

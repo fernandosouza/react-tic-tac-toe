@@ -12,14 +12,14 @@ describe('Board', () => {
     expect(board).toMatchSnapshot();
   });
 
-  it('renders fulfilled slots', () => {
-    const fulfilledSlots = new Map();
-    fulfilledSlots.set(0, 1);
-    fulfilledSlots.set(1, 0);
-    fulfilledSlots.set(2, 2);
+  it('renders filled slots', () => {
+    const filledSlots = new Map();
+    filledSlots.set(0, 1);
+    filledSlots.set(1, 0);
+    filledSlots.set(2, 2);
 
     const board = renderer.create(
-      <Board fulfilledSlots={fulfilledSlots} />
+      <Board filledSlots={filledSlots} />
     ).toJSON();
     expect(board).toMatchSnapshot();
   });

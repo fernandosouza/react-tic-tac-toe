@@ -13,7 +13,7 @@ $grid-border: 1px solid rgba(255, 255, 255, .1);
     width: $board-size;
     outline: $grid-border;
 
-    .fulfilled {
+    .filled {
       @include background-transition();
     }
   }
@@ -25,7 +25,7 @@ $grid-border: 1px solid rgba(255, 255, 255, .1);
     height: $grid-size;
     width: $grid-size;
 
-    &:hover:not(.fulfilled) {
+    &:hover:not(.filled) {
       background-color: $base-color + 10%;
       @include background-transition(150ms);
     }
