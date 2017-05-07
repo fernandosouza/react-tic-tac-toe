@@ -1,0 +1,13 @@
+[class*='player'] {
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+}
+
+.player1 {
+  background-image: url('../x.svg');
+}
+
+.player2 {
+  background-image: url('../circle.svg');
+}

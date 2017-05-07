@@ -37,11 +37,3 @@ $grid-border: 1px solid rgba(255, 255, 255, .1);
 @media only screen and (min-device-width : 768px) {
   @include build-board();  
 }
-
-.player2 {
-  background-color: $danger-color;
-}
-
-.player1 {
-  background-color: #f1c40f;
-}
