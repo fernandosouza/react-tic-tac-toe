@@ -16,6 +16,10 @@ $grid-border: 1px solid rgba(255, 255, 255, .1);
     .filled {
       @include background-transition();
     }
+
+    .filled.winner {
+      animation: win infinite alternate ease-in-out .24s;
+    }
   }
 
   .board-slot {
@@ -36,4 +40,14 @@ $grid-border: 1px solid rgba(255, 255, 255, .1);
 
 @media only screen and (min-device-width : 768px) {
   @include build-board();  
+}
+
+@keyframes win {
+  0% {
+    background-size: 80%;
+  }
+
+  100% {
+    background-size: 70%;
+  }
 }
