@@ -1,7 +1,6 @@
 .setup-page {
-  width: 250px;
-  margin: 0 auto;
-  display: block;
+  display: flex;
+  width: 100%;
 }
 
 .setup-page input, .setup-page button {
@@ -14,4 +13,23 @@
 
 .setup-page label {
   margin-top: 25px;
+}
+
+.collumn {
+  flex-grow: 1;
+  width: 50%;
+}
+
+.setup-page {
+  .player [class*="icon"] {
+    margin: 0 auto;
+    width: 140px;
+    height: 140px;
+  }
+
+  input {
+    width: 200px;
+    margin: 10px auto;
+    display: block;
+  }
 }

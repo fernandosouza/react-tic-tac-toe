@@ -69,23 +69,32 @@ class Setup extends Component {
 
     return (
       <div className="tic-tac-toe-app">
-        <form className="setup-page" onSubmit={this.onFormSubmit_.bind(this)}>
-          <label htmlFor="playerOne">Player 1</label>
-          <input
-            type="text"
-            value={this.state.playerOneName}
-            onChange={this.onPlayerOneNameChange_.bind(this)}
-            id="playerOne" />
+        <div className="setup-page">
+          <div className="collumn">
+            <div className="player">
+              <div className="icon-x"></div>
+            </div>
+            <input
+              type="text"
+              value={this.state.playerOneName}
+              placeholder="Your name here"
+              onChange={this.onPlayerOneNameChange_.bind(this)}
+              id="playerOne" />
+          </div>
 
-          <label htmlFor="playerTwo">Player 2</label>
-          <input
-            type="text"
-            value={this.state.playerTwoName}
-            onChange={this.onPlayerTwoNameChange_.bind(this)}
-            id="playerTwo" />
-
-            <button disabled={disabled}> Start! </button>
-        </form>
+          <div className="collumn">
+            <div className="player">
+              <div className="icon-circle"></div>
+            </div>
+            <input
+              type="text"
+              value={this.state.playerTwoName}
+              placeholder="Your name here"
+              onChange={this.onPlayerTwoNameChange_.bind(this)}
+              id="playerTwo" />
+          </div>
+        </div>
+        <button disabled={disabled} onClick={this.onFormSubmit_.bind(this)}> Start! </button>
       </div>
     );
   }
