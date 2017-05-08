@@ -2,7 +2,7 @@ import React from 'react';
 import Setup from './Setup';
 import { shallow } from 'enzyme';
 
-describe('Game', () => {
+describe('Setup', () => {
   it('should not call onFinishSetup if the first player`s name is missing', () => {
     const onFinishSetupMock = jest.fn();
     const wrapper = shallow(<Setup onFinishSetup={onFinishSetupMock} />);
@@ -11,7 +11,7 @@ describe('Game', () => {
     playerTwoInput.value = 'Souza';
     playerTwoInput.simulate('change', {target: {value: playerTwoInput.value}});
 
-    wrapper.find('form').simulate('submit', new Event('submit'));
+    wrapper.find('button').simulate('click', new Event('click'));
     expect(onFinishSetupMock.mock.calls.length).toBe(0);
   });
 
@@ -23,7 +23,7 @@ describe('Game', () => {
     playerOneInput.value = 'Souza';
     playerOneInput.simulate('change', {target: {value: playerOneInput.value}});
 
-    wrapper.find('form').simulate('submit', new Event('submit'));
+    wrapper.find('button').simulate('click', new Event('click'));
     expect(onFinishSetupMock.mock.calls.length).toBe(0);
   });
 
@@ -38,7 +38,7 @@ describe('Game', () => {
     playerOneInput.simulate('change', {target: {value: playerOneInput.value}});
     playerTwoInput.simulate('change', {target: {value: playerTwoInput.value}});
 
-    wrapper.find('form').simulate('submit', new Event('submit'));
+    wrapper.find('button').simulate('click', new Event('click'));
     expect(onFinishSetupMock.mock.calls.length).toBe(0);
   });
 });
