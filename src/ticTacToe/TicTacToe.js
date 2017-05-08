@@ -20,6 +20,18 @@ class TicTacToe {
     this.currentPlayer_ = this.playersManager_.getCurrentPlayer();
   }
 
+  checkSlots_(slots, playerId) {
+    if (slots.length < 3) {
+      return;
+    }
+
+    if (this.checkSlot_(slots[0], playerId)
+      && this.checkSlot_(slots[1], playerId) 
+      && this.checkSlot_(slots[2], playerId)) {
+        return slots;
+      }
+  }
+
   /**
    * Checks if there is any matched column by a given player.
    * @param {Number} playerId The player id to be checked.
@@ -29,13 +41,10 @@ class TicTacToe {
    **/
   checkColumns_(playerId) {
     return (
-      (this.checkSlot_(0, playerId) && this.checkSlot_(3, playerId) 
-        && this.checkSlot_(6, playerId)) ||
-      (this.checkSlot_(1, playerId) && this.checkSlot_(4, playerId) 
-        && this.checkSlot_(7, playerId)) ||
-      (this.checkSlot_(2, playerId) && this.checkSlot_(5, playerId) 
-        && this.checkSlot_(8, playerId))
-    );
+      this.checkSlots_([0, 3, 6], playerId) || 
+      this.checkSlots_([1, 4, 7], playerId) || 
+      this.checkSlots_([2, 5, 8], playerId)
+    )
   }
 
   /**
@@ -47,11 +56,7 @@ class TicTacToe {
    * @private
    **/
   checkDiagonalUpLeft_(playerId) {
-    return (
-      this.checkSlot_(0, playerId) && 
-      this.checkSlot_(4, playerId) &&
-      this.checkSlot_(8, playerId)
-    );
+    return this.checkSlots_([0, 4, 8], playerId);
   }
 
   /**
@@ -63,11 +68,7 @@ class TicTacToe {
    * @private
    **/
   checkDiagonalUpRight_(playerId) {
-    return (
-      this.checkSlot_(2, playerId) &&
-      this.checkSlot_(4, playerId) && 
-      this.checkSlot_(6, playerId)
-    );
+    return this.checkSlots_([2, 4, 6], playerId);
   }
 
   /**
@@ -80,13 +81,10 @@ class TicTacToe {
    **/
   checkLines_(playerId) {
     return (
-      (this.checkSlot_(0, playerId) && this.checkSlot_(1, playerId) 
-        && this.checkSlot_(2, playerId)) ||
-      (this.checkSlot_(3, playerId) && this.checkSlot_(4, playerId) 
-        && this.checkSlot_(5, playerId)) ||
-      (this.checkSlot_(6, playerId) && this.checkSlot_(7, playerId) 
-        && this.checkSlot_(8, playerId))
-    );
+      this.checkSlots_([0, 1, 2], playerId) || 
+      this.checkSlots_([3, 4, 5], playerId) || 
+      this.checkSlots_([6, 7, 8], playerId)
+    )
   }
 
   /**
@@ -155,7 +153,10 @@ class TicTacToe {
       this.checkDiagonalUpRight_(playerId);
 
     if (hasWinner) {
-      return this.currentPlayer_;
+      return {
+        player: this.currentPlayer_,
+        slots: hasWinner
+      };
     }
   }
 }

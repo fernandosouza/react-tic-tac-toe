@@ -74,7 +74,7 @@ describe('Game', () => {
     game.fillSlot(4);
     game.fillSlot(2);
 
-    expect(onGameFinishMock.mock.calls[0][0]).toHaveProperty('name', 'fernando');
+    expect(onGameFinishMock.mock.calls[0][0].player).toHaveProperty('name', 'fernando');
   });
 
   it('should pass undefined as argument to the registered callback if no one won', () => {
