@@ -21,6 +21,10 @@
 }
 
 .setup-page {
+  .player {
+    align-self: center;
+  }
+
   .player [class*="icon"] {
     margin: 0 auto;
     width: 140px;

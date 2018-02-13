@@ -15,7 +15,8 @@ class App extends Component {
     super(prop);
     
     this.state = {
-      filledSlots: []
+      filledSlots: [],
+      winnerSlots: null
     }
 
     let { firstPlayer, secondPlayer } = this.props.match.params;
@@ -33,7 +34,10 @@ class App extends Component {
     if (winner) {
       let gameLeaderBoard = this.storage_.getData();
       this.storage_.update([winner.name, ...gameLeaderBoard]);
-      this.props.history.push(`/leaderboard/${winner.name}`);
+      this.setState({
+        winnerSlots: winner.slots
+      })
+      // this.props.history.push(`/leaderboard/${winner.player.name}`);
     }
   }
 
@@ -45,6 +49,9 @@ class App extends Component {
    * @private 
    **/
   onSlotClick_(key) {
+    if (this.state.winnerSlots) {
+      return;
+    }
     this.game_.fillSlot(key);
     this.setState({
       filledSlots: this.game_.getBoard()
@@ -58,6 +65,7 @@ class App extends Component {
     return (
       <div className="tic-tac-toe-app">
         <Board
+          winnerSlots={this.state.winnerSlots}
           filledSlots={this.state.filledSlots}
           onSlotClick={this.onSlotClick_.bind(this)} />
 
