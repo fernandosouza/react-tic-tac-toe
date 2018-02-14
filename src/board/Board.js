@@ -59,7 +59,7 @@ class Board extends PureComponent {
   }
 
   /**
-   * @inheritdoc  
+   * @inheritdoc
    */
   render() {
     return (
