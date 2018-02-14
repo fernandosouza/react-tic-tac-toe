@@ -13,7 +13,7 @@ class Board extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      slots: Array.apply(null, {length: 9}).map(Number.call, Number)
+      slots: Array(9).fill(0, 0, 9)
     };
   }
 
