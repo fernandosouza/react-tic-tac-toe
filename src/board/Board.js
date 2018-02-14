@@ -37,23 +37,23 @@ class Board extends PureComponent {
    */
   renderSlots_() {
     let { filledSlots, winnerSlots } = this.props;
-    return this.state.slots.map((slot, key) => {
+    return this.state.slots.map((slot, index) => {
       let filledClass;
       let winnerClass = '';
 
-      if (winnerSlots && winnerSlots.includes(key)) {
+      if (winnerSlots.includes(index)) {
         winnerClass = ' winner';
       }
 
-      if (filledSlots instanceof Map && filledSlots.get(key)) {
-        filledClass = ` filled player${filledSlots.get(key)}${winnerClass}`
+      if (filledSlots.get(index)) {
+        filledClass = ` filled player${filledSlots.get(index)}${winnerClass}`
       }
 
       return (
         <div
           className={`board-slot ${filledClass||''}`}
-          onClick={this.slotClickHandler_.bind(this, key)}
-          key={key}></div>
+          onClick={this.slotClickHandler_.bind(this, index)}
+          key={index}></div>
       );
     })
   }
