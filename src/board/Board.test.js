@@ -4,38 +4,57 @@ import Board from './Board';
 import renderer from 'react-test-renderer';
 import { shallow } from 'enzyme';
 
-describe('Board', () => {  
+describe('Board', () => {
+  let filledSlots;
+  let winnerSlots;
+
+  beforeEach(() => {
+    filledSlots = new Map();
+    winnerSlots = [];
+  });
+
   it('renders 9 slots', () => {
     const board = renderer.create(
-      <Board />
+      <Board
+        filledSlots={filledSlots}
+        winnerSlots={winnerSlots}
+      />
     ).toJSON();
     expect(board).toMatchSnapshot();
   });
 
   it('renders filled slots', () => {
-    const filledSlots = new Map();
     filledSlots.set(0, 1);
     filledSlots.set(1, 0);
     filledSlots.set(2, 2);
 
     const board = renderer.create(
-      <Board filledSlots={filledSlots} />
+      <Board
+        filledSlots={filledSlots}
+        winnerSlots={winnerSlots}
+      />
     ).toJSON();
     expect(board).toMatchSnapshot();
   });
 
   it('should call a callback function after clicking on slots', () => {
     const callbackMock = jest.fn();
-    const wrapper = shallow(<Board onSlotClick={callbackMock} />);
-
+    const wrapper = shallow(<Board
+      filledSlots={filledSlots}
+      winnerSlots={winnerSlots}
+      onSlotClick={callbackMock}
+    />);
     wrapper.find('.board-slot').at(0).simulate('click');
     expect(callbackMock.mock.calls.length).toBe(1);
   });
 
   it('should call a callback function with the slot index as argument after clicking on slots', () => {
     const callbackMock = jest.fn();
-    const wrapper = shallow(<Board onSlotClick={callbackMock} />);
-
+    const wrapper = shallow(<Board
+      filledSlots={filledSlots}
+      winnerSlots={winnerSlots}
+      onSlotClick={callbackMock}
+    />);
     wrapper.find('.board-slot').at(1).simulate('click');
     expect(callbackMock.mock.calls[0][0]).toBe(1);
   });

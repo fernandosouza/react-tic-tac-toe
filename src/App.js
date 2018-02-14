@@ -15,8 +15,8 @@ class App extends Component {
     super(prop);
     
     this.state = {
-      filledSlots: [],
-      winnerSlots: null
+      filledSlots: new Map(),
+      winnerSlots: []
     }
 
     let { firstPlayer, secondPlayer } = this.props.match.params;
@@ -45,14 +45,14 @@ class App extends Component {
    * Handles the click event on the each slot and updates the filledSlots
    * state.
    * the turn to the next player.
-   * @param {Number} key The Board Slot index.
+   * @param {Number} index The Board Slot index.
    * @private 
    **/
-  onSlotClick_(key) {
-    if (this.state.winnerSlots) {
+  onSlotClick_(index) {
+    if (this.state.winnerSlots.length > 0 ) {
       return;
     }
-    this.game_.fillSlot(key);
+    this.game_.fillSlot(index);
     this.setState({
       filledSlots: this.game_.getBoard()
     });
