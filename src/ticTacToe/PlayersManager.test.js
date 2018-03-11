@@ -93,4 +93,26 @@ describe('PlayersManager', () => {
     currentPlayer = playersManager.getCurrentPlayer();
     expect(currentPlayer.name).toBe('Souza');
   });
+
+  it('should not allow duplicated names', () => {
+    const players = [
+      { name: 'fernando', class: 'className' },
+      { name: 'Fernando', class: 'className' }
+    ];
+    const playersManager = new PlayersManager(players);
+    let currentPlayer = playersManager.getCurrentPlayer();
+    expect(playersManager.checkErros()).toHaveLength(1);
+  });
+
+  it('should duplicated error code be `duplicated_names`', () => {
+    const players = [
+      { name: 'fernando', class: 'className' },
+      { name: 'Fernando', class: 'className' }
+    ];
+    const playersManager = new PlayersManager(players);
+    let currentPlayer = playersManager.getCurrentPlayer();
+    expect(playersManager.checkErros()[0]).toEqual({
+      code: 'duplicated_names'
+    });
+  });
 });
