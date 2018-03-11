@@ -5,6 +5,9 @@ import Player from './Player';
  * is in the turn.
  **/
 class PlayersManager {
+  erros_ = [];
+  players_ = [];
+
   constructor(players = []) {
     this.createPlayers_(players);
     this.currentPlayerIndex_ = 0;
@@ -23,10 +26,24 @@ class PlayersManager {
   }
 
   /**
+   * Checks if there are erros regarding players.
+   * @returns {Array} Array of errors
+   **/
+  checkErros() {
+    this.erros_ = [];
+    if (
+      this.players_[0].name.toLowerCase() == this.players_[1].name.toLowerCase()
+    ) {
+      this.erros_.push({ code: 'duplicated_names' });
+    }
+    return this.erros_;
+  }
+
+  /**
    * Method used by the class constructor to create fill the initial list of
    * players.
    * @param {Array<Object>} players A array of players data.
-   * @private 
+   * @private
    **/
   createPlayers_(players) {
     this.players_ = players.map(player => {
@@ -43,7 +60,7 @@ class PlayersManager {
   }
 
   /**
-   * Returns the list of players. 
+   * Returns the list of players.
    * @returns {Array<Object>} The list of players
    **/
   getPlayers() {
