@@ -1,5 +1,5 @@
 import PlayersManager from './PlayersManager';
-import Player from '../player/Player';
+import Player from '../ticTacToe/Player';
 
 const playerMock = {
   name: 'Fernando',
