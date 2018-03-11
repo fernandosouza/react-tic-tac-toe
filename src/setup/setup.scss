@@ -23,6 +23,7 @@
 .setup-page {
   .player {
     align-self: center;
+    margin: 20px 0;
   }
 
   .player [class*="icon"] {
@@ -35,5 +36,10 @@
     width: 200px;
     margin: 10px auto;
     display: block;
+    font-size: 16px;
+    outline: 0;
+    &::placeholder {
+      color: #fff;
+    }
   }
 }
