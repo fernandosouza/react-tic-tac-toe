@@ -77,7 +77,7 @@ class Setup extends Component {
             <input
               type="text"
               value={this.state.playerOneName}
-              placeholder="Your name here"
+              placeholder="Player one"
               onChange={this.onPlayerOneNameChange_.bind(this)}
               id="playerOne" />
           </div>
@@ -89,7 +89,7 @@ class Setup extends Component {
             <input
               type="text"
               value={this.state.playerTwoName}
-              placeholder="Your name here"
+              placeholder="Player two"
               onChange={this.onPlayerTwoNameChange_.bind(this)}
               id="playerTwo" />
           </div>
