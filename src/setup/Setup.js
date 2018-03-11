@@ -20,7 +20,7 @@ class Setup extends Component {
    * @returns {boolean} true for disable and false for enable
    * @private 
    **/
-  disableForm() {
+  disableForm_() {
     let { playerOneName, playerTwoName } = this.state;
     return !playerOneName || !playerTwoName || playerOneName === playerTwoName;
   }
@@ -34,7 +34,17 @@ class Setup extends Component {
   onFormSubmit_(event) {
     event.preventDefault();
     let { playerOneName, playerTwoName } = this.state;
-    if (playerOneName && playerTwoName && !this.disableForm()) {
+    this.props.game.playersManager_.addPlayer({ 
+      id: 1,
+      name: playerOneName,
+      class:'player1'
+    });
+    this.props.game.playersManager_.addPlayer({
+      id: 2,
+      name: playerTwoName,
+      class: 'player2'
+    });
+    if (!this.props.game.playersManager_.checkErros().lenght) {
       this.props.history.push(`/firstPlayer/${playerOneName}/secondPlayer/${playerTwoName}`);
     }
   }
@@ -65,7 +75,7 @@ class Setup extends Component {
    * @inheritdoc
    **/
   render() {
-    let disabled = this.disableForm();
+    let disabled = this.disableForm_();
 
     return (
       <div className="tic-tac-toe-app">

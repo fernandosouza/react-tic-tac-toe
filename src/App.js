@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Board from './board/Board';
-import TicTacToe from './ticTacToe/TicTacToe';
 import Storage from './storage/Storage';
 import { Link } from 'react-router-dom'
 import './App.css';
@@ -18,9 +17,7 @@ class App extends Component {
       filledSlots: new Map(),
       winnerSlots: []
     }
-
-    let { firstPlayer, secondPlayer } = this.props.match.params;
-    this.game_ = new TicTacToe(firstPlayer, secondPlayer, this.onGameEnd_.bind(this));
+    this.props.game.onGameEnd = this.onGameEnd_.bind(this);
     this.storage_ = new Storage('gameLeaderBoard');
   }
 
@@ -37,7 +34,6 @@ class App extends Component {
       this.setState({
         winnerSlots: winner.slots
       })
-      // this.props.history.push(`/leaderboard/${winner.player.name}`);
     }
   }
 
@@ -52,9 +48,9 @@ class App extends Component {
     if (this.state.winnerSlots.length > 0 ) {
       return;
     }
-    this.game_.fillSlot(index);
+    this.props.game.fillSlot(index);
     this.setState({
-      filledSlots: this.game_.getBoard()
+      filledSlots: this.props.game.getBoard()
     });
   }
 
