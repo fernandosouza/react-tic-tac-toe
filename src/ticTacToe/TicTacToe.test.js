@@ -1,15 +1,27 @@
 import TicTacToe from './TicTacToe';
 
 describe('Game', () => {
+  let game;
+
+  beforeEach(() => {
+    game = new TicTacToe({
+      id: 1,
+      name: 'A',
+      class: 'AA'
+    }, {
+      id: 2,
+      name: 'B',
+      class: 'BB'
+    });
+  });
+
   it('should initialize with a empty board', () => {
-    let game = new TicTacToe();
     let board = game.getBoard();
 
     expect(board.size).toBe(0);
   });
 
   it('should fill a giving slot with the current player id', () => {
-    let game = new TicTacToe();
     let board;
 
     game.fillSlot(0);
@@ -21,7 +33,6 @@ describe('Game', () => {
   });
 
   it('should not fill the same slot twice', () => {
-    let game = new TicTacToe();
     let board;
 
     game.fillSlot(0);
@@ -33,7 +44,6 @@ describe('Game', () => {
   });
 
   it('should not exceed 9 game turns', () => {
-    let game = new TicTacToe();
     let board;
 
     game.fillSlot(0);
@@ -53,7 +63,7 @@ describe('Game', () => {
 
   it('should call a registered callback as soon as the game finish', () => {
     const onGameFinishMock = jest.fn();
-    let game = new TicTacToe('fernando', 'Souza', onGameFinishMock);
+    game.onGameEnd = onGameFinishMock;
 
     game.fillSlot(0);
     game.fillSlot(3);
@@ -66,7 +76,7 @@ describe('Game', () => {
 
   it('should pass the winner as argument to the registered callback', () => {
     const onGameFinishMock = jest.fn();
-    let game = new TicTacToe('fernando', 'Souza', onGameFinishMock);
+    game.onGameEnd = onGameFinishMock;
 
     game.fillSlot(0);
     game.fillSlot(3);
@@ -74,12 +84,12 @@ describe('Game', () => {
     game.fillSlot(4);
     game.fillSlot(2);
 
-    expect(onGameFinishMock.mock.calls[0][0].player).toHaveProperty('name', 'fernando');
+    expect(onGameFinishMock.mock.calls[0][0].player).toHaveProperty('name', 'A');
   });
 
   it('should pass undefined as argument to the registered callback if no one won', () => {
     const onGameFinishMock = jest.fn();
-    let game = new TicTacToe('fernando', 'Souza', onGameFinishMock);
+    game.onGameEnd = onGameFinishMock;
 
     game.fillSlot(0);
     game.fillSlot(2);

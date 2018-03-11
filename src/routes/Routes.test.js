@@ -9,7 +9,7 @@ import Routes from './Routes';
 const wrapper = shallow(<Routes />);
 const pathMap = wrapper.find(Route).reduce((pathMap, route) => {
   const routeProps = route.props();
-  pathMap[routeProps.path] = routeProps.component;
+  pathMap[routeProps.path] = routeProps.render().type;
   return pathMap;
 }, {});
 

@@ -7,10 +7,10 @@ import Player from './Player';
 class PlayersManager {
   erros_ = [];
   players_ = [];
+  currentPlayerIndex_ = 0;
 
   constructor(players = []) {
     this.createPlayers_(players);
-    this.currentPlayerIndex_ = 0;
   }
 
   /**
@@ -31,8 +31,13 @@ class PlayersManager {
    **/
   checkErros() {
     this.erros_ = [];
+    if (!this.players_.length) {
+      this.erros_.push({ code: 'no_players' });
+      return this.erros_;
+    }
     if (
-      this.players_[0].name.toLowerCase() == this.players_[1].name.toLowerCase()
+      this.players_[0].name.toLowerCase() ===
+      this.players_[1].name.toLowerCase()
     ) {
       this.erros_.push({ code: 'duplicated_names' });
     }
