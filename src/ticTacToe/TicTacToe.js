@@ -1,4 +1,4 @@
-import PlayersManager from '../playersManager/PlayersManager';
+import PlayersManager from '../ticTacToe/PlayersManager';
 import { isFunction } from 'underscore';
 
 class TicTacToe {

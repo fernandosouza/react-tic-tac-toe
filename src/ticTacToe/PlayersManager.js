@@ -1,5 +1,4 @@
-import Player from '../player/Player';
-import './players.css';
+import Player from './Player';
 
 /**
  * Manages players providing a public API for adding players and sets which one 
