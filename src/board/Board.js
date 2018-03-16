@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { isFunction } from 'underscore';
+import { Slot } from './Slot';
 import './board.css';
 
 /* *
@@ -12,23 +12,7 @@ class Board extends PureComponent {
    */
   constructor(props) {
     super(props);
-    this.state = {
-      slots: Array(9).fill(0, 0, 9)
-    };
-  }
-
-  /**
-   * Handles clicks on slots and passes its index through a onSlotClick 
-   * function that cames from a parent component.
-   * @param {String} index Slot index.
-   * @private 
-   */
-  slotClickHandler_(index) {
-    let { onSlotClick } = this.props;
-
-    if (isFunction(onSlotClick)) {
-      onSlotClick(index);
-    }
+    this.slots = Array(9).fill(0, 0, 9);
   }
 
   /**
@@ -37,23 +21,15 @@ class Board extends PureComponent {
    */
   renderSlots_() {
     let { filledSlots, winnerSlots } = this.props;
-    return this.state.slots.map((slot, index) => {
-      let filledClass;
-      let winnerClass = '';
-
-      if (winnerSlots.includes(index)) {
-        winnerClass = ' winner';
-      }
-
-      if (filledSlots.get(index)) {
-        filledClass = ` filled player${filledSlots.get(index)}${winnerClass}`
-      }
-
+    return this.slots.map((slot, index) => {
       return (
-        <div
-          className={`board-slot ${filledClass||''}`}
-          onClick={this.slotClickHandler_.bind(this, index)}
-          key={index}></div>
+        <Slot
+          key={index}
+          winnerSlots={winnerSlots}
+          filledSlots={filledSlots}
+          index={index}
+          onSlotClick={this.props.onSlotClick.bind(this, index)}
+        />
       );
     })
   }
