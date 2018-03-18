@@ -25,10 +25,12 @@ class Board extends PureComponent {
       return (
         <Slot
           key={index}
-          winnerSlots={winnerSlots}
-          filledSlots={filledSlots}
+          winner={winnerSlots.includes(index)}
+          player={filledSlots.get(index)}
           index={index}
-          onSlotClick={this.props.onSlotClick.bind(this, index)}
+          onSlotClick={() => {
+            this.props.onSlotClick(index);
+          }}
         />
       );
     })

@@ -11,31 +11,20 @@ const params = {
   secondPlayer: 'Souza'
 };
 
-const game = new TicTacToe(
-  {
-    id: 1,
-    name: 'fernando'
-  },
-  {
-    id: 2,
-    name: 'Souza'
-  }
-);
+let game;
+
+beforeEach(() => {
+  game = new TicTacToe();
+})
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Router><App match={ {params} } game={game} /></Router>, div);
-});
-
-it('should be able to click on a slot', () => {
-  const wrapper = mount(<Router><App match={ {params} } game={game} /></Router>);
-  wrapper.find('.board-slot').at(0).simulate('click');
-  expect(wrapper.find('.board-slot').at(0).hasClass('filled')).toBe(true);
+  ReactDOM.render(<Router><App match={ {params} } game={ game }/></Router>, div);
 });
 
 it('should be able to react to game end', () => {
   let spy = App.prototype.onGameEnd_ = jest.fn();
-  const wrapper = mount(<Router><App match={ {params} } game={game} /></Router>);
+  const wrapper = mount(<Router><App match={ {params} } game={ game }/></Router>);
   wrapper.find('.board-slot').at(0).simulate('click');
   wrapper.find('.board-slot').at(3).simulate('click');
   wrapper.find('.board-slot').at(1).simulate('click');

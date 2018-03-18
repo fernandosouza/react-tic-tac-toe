@@ -16,12 +16,17 @@ class PlayersManager {
   /**
    * Adds a single player to the array of players by crating a new Player
    * instance.
-   * @param {Object} player The player data to create a new Player instance.
+   * @param {String} playerName The player data to create a new Player instance.
    **/
-  addPlayer(player) {
-    if (!player) {
+  addPlayer(playerName) {
+    if (!playerName) {
       throw Error('Player configuration should be informed');
     }
+    const player = {
+      name: playerName,
+      id: this.players_.length + 1,
+      class: 'player' + this.players_.length + 1
+    };
     this.players_.push(new Player(player));
   }
 

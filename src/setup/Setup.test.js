@@ -3,6 +3,13 @@ import Setup from './Setup';
 import { shallow } from 'enzyme';
 import TicTacToe from '../ticTacToe/TicTacToe';
 
+const match = {
+  params: {
+    firstPlayer: 'A',
+    secondPlayer: 'B'
+  }
+}
+
 describe('Setup', () => {
   const game = new TicTacToe();
 

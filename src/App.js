@@ -10,22 +10,47 @@ import './App.css';
  * @author Fernando Souza nandosouzafilho@gmail.com
  **/
 class App extends Component {
-  constructor(prop) {
-    super(prop);
-    
+  constructor(props) {
+    super(props);
+
+    if (this.hasNoPlayers_()) {
+      this.setPlayersFromURL_();
+    }
+
     this.state = {
       filledSlots: new Map(),
       winnerSlots: []
-    }
+    };
     this.props.game.onGameEnd = this.onGameEnd_.bind(this);
     this.storage_ = new Storage('gameLeaderBoard');
+  }
+
+  /**
+   * Uses url parameters to create players
+   * @private
+   **/
+  setPlayersFromURL_() {
+    const { firstPlayer, secondPlayer } = this.props.match.params;
+    this.props.game.playersManager_.addPlayer(firstPlayer);
+    this.props.game.playersManager_.addPlayer(secondPlayer);
+  }
+
+  /**
+   * Checks if players was not already defined.
+   * @returns {Boolean}
+   * @private
+   **/
+  hasNoPlayers_() {
+    return this.props.game.playersManager_
+      .checkErros()
+      .some(error => error.code === 'no_players');
   }
 
   /**
    * Callback method that will be called when the game is finished. It updates
    * the local storage with the new winner and go to the Leaderboard page.
    * @param {Object} winner The Player object.
-   * @private 
+   * @private
    **/
   onGameEnd_(winner) {
     if (winner) {
@@ -33,7 +58,7 @@ class App extends Component {
       this.storage_.update([winner.name, ...gameLeaderBoard]);
       this.setState({
         winnerSlots: winner.slots
-      })
+      });
     }
   }
 
@@ -42,10 +67,10 @@ class App extends Component {
    * state.
    * the turn to the next player.
    * @param {Number} index The Board Slot index.
-   * @private 
+   * @private
    **/
   onSlotClick_(index) {
-    if (this.state.winnerSlots.length > 0 ) {
+    if (this.state.winnerSlots.length > 0) {
       return;
     }
     this.props.game.fillSlot(index);
@@ -63,11 +88,14 @@ class App extends Component {
         <Board
           winnerSlots={this.state.winnerSlots}
           filledSlots={this.state.filledSlots}
-          onSlotClick={this.onSlotClick_.bind(this)} />
+          onSlotClick={this.onSlotClick_.bind(this)}
+        />
 
-          <Link className="button new-game-button" to="/">New game</Link>
+        <Link className="button new-game-button" to="/">
+          New game
+        </Link>
       </div>
-    )
+    );
   }
 }
 

@@ -2,17 +2,15 @@ import React from 'react';
 
 export const Slot = props => {
   let filledClass = '';
-  let winnerClass = '';
 
-  if (props.winnerSlots.includes(props.index)) {
-    winnerClass = ' winner';
+  if (props.player) {
+    filledClass += `filled player${props.player}`;
   }
 
-  if (props.filledSlots.get(props.index)) {
-    filledClass = ` filled player${props.filledSlots.get(
-      props.index
-    )}${winnerClass}`;
+  if (props.winner) {
+    filledClass = filledClass + ' winner';
   }
+
   return (
     <div
       className={`board-slot ${filledClass}`}

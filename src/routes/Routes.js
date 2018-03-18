@@ -14,7 +14,6 @@ export default props => {
   return <Router basename={process.env.PUBLIC_URL}>
       <div>
         <Route exact path="/" render={route => {
-            game = new TicTacToe();
             return <Setup {...route} game={game} />;
           }}
         />
