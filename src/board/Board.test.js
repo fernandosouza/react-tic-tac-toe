@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Board from './Board';
 import renderer from 'react-test-renderer';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 describe('Board', () => {
   let filledSlots;
@@ -39,7 +39,7 @@ describe('Board', () => {
 
   it('should call a callback function after clicking on slots', () => {
     const callbackMock = jest.fn();
-    const wrapper = shallow(<Board
+    const wrapper = mount(<Board
       filledSlots={filledSlots}
       winnerSlots={winnerSlots}
       onSlotClick={callbackMock}
@@ -50,7 +50,7 @@ describe('Board', () => {
 
   it('should call a callback function with the slot index as argument after clicking on slots', () => {
     const callbackMock = jest.fn();
-    const wrapper = shallow(<Board
+    const wrapper = mount(<Board
       filledSlots={filledSlots}
       winnerSlots={winnerSlots}
       onSlotClick={callbackMock}

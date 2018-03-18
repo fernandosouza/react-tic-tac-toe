@@ -4,15 +4,7 @@ describe('Game', () => {
   let game;
 
   beforeEach(() => {
-    game = new TicTacToe({
-      id: 1,
-      name: 'A',
-      class: 'AA'
-    }, {
-      id: 2,
-      name: 'B',
-      class: 'BB'
-    });
+    game = new TicTacToe('A', 'B');
   });
 
   it('should initialize with a empty board', () => {

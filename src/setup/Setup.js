@@ -34,16 +34,6 @@ class Setup extends Component {
   onFormSubmit_(event) {
     event.preventDefault();
     let { playerOneName, playerTwoName } = this.state;
-    this.props.game.playersManager_.addPlayer({ 
-      id: 1,
-      name: playerOneName,
-      class:'player1'
-    });
-    this.props.game.playersManager_.addPlayer({
-      id: 2,
-      name: playerTwoName,
-      class: 'player2'
-    });
     if (!this.props.game.playersManager_.checkErros().lenght) {
       this.props.history.push(`/firstPlayer/${playerOneName}/secondPlayer/${playerTwoName}`);
     }
