@@ -1,5 +1,5 @@
 class Storage {
-  constructor(storageName, initialValue = "[]") {
+  constructor(storageName = 'gameLeaderBoard', initialValue = '[]') {
     this.storageName = storageName;
     if (!localStorage.getItem(storageName)) {
       localStorage.setItem(storageName, initialValue);

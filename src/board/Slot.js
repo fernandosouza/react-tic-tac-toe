@@ -8,7 +8,7 @@ export const Slot = props => {
   }
 
   if (props.winner) {
-    filledClass = filledClass + ' winner';
+    filledClass += ' winner';
   }
 
   return (

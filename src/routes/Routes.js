@@ -11,7 +11,8 @@ import {
 let game = new TicTacToe();
 
 export default props => {
-  return <Router basename={process.env.PUBLIC_URL}>
+  return (
+    <Router basename={process.env.PUBLIC_URL}>
       <div>
         <Route exact path="/" render={route => {
             return <Setup {...route} game={game} />;
@@ -25,10 +26,7 @@ export default props => {
             return <LeaderBoard {...route} game={game} />;
           }}
         />
-        <Route path="/leaderboard" render={route => {
-            return <LeaderBoard {...route} game={game} />;
-          }}
-        />
       </div>
-    </Router>;
+    </Router>
+  );
 }

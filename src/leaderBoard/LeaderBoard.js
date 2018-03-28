@@ -13,7 +13,7 @@ class LeaderBoard extends Component {
    * @inheritdoc
    */
   componentWillMount() {
-    let storage = new Storage('gameLeaderBoard').getData();
+    let storage = new Storage().getData();
     this.setState({
       leaderBoard: storage
     });
@@ -23,11 +23,20 @@ class LeaderBoard extends Component {
    * Renders winner congratulation message.
    * @private 
    */
-  renderWinnerMessage_() {    
+  renderWinnerMessage_() {
     let  { winner } = this.props.match.params;
 
     if (!winner) {
-      return<Link to="/">New game</Link>
+      return (
+        <div>
+          <p>
+            We do not have leaders to how.
+            Why don't you <Link to="/">play</Link> to see if you can put 
+            your name here?
+          </p>
+          <Link to="/">New game</Link>
+        </div>
+      )
     }
 
     return (
@@ -37,9 +46,11 @@ class LeaderBoard extends Component {
           Now you are in our leaderboard.
         </p>
 
-        <p>Are you ready to <a href="" onClick={this.props.history.goBack}>
-            play again</a> aganst you partner or start a <Link to="/">
-            new game</Link>?</p>
+        <p>
+          Are you ready to <a href="" onClick={this.props.history.goBack}>
+          play again</a> aganst you partner or start a 
+          <Link to="/">new game</Link>?
+        </p>
       </div>
     );
   }
