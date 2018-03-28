@@ -22,11 +22,11 @@ class App extends Component {
       winnerSlots: []
     };
     this.props.game.onGameEnd = this.onGameEnd_.bind(this);
-    this.storage_ = new Storage('gameLeaderBoard');
+    this.storage_ = new Storage();
   }
 
   /**
-   * Uses url parameters to create players
+   * Uses url parameters to create players.
    * @private
    **/
   setPlayersFromURL_() {
@@ -55,9 +55,10 @@ class App extends Component {
   onGameEnd_(winner) {
     if (winner) {
       let gameLeaderBoard = this.storage_.getData();
-      this.storage_.update([winner.name, ...gameLeaderBoard]);
+      this.storage_.update([winner.player.name, ...gameLeaderBoard]);
       this.setState({
-        winnerSlots: winner.slots
+        winnerSlots: winner.slots,
+        winner: winner
       });
     }
   }
@@ -83,6 +84,17 @@ class App extends Component {
    * @inheritdoc
    **/
   render() {
+    const leaderboardMessage = () => {
+      if (this.state.winner) {
+        return (
+          <p className="winner-message">
+            Congratulations {this.state.winner.player.name}. <Link to="/leaderboard">
+              See leaderboard
+            </Link>
+          </p>
+        );
+      }
+    }
     return (
       <div className="tic-tac-toe-app">
         <Board
@@ -94,6 +106,10 @@ class App extends Component {
         <Link className="button new-game-button" to="/">
           New game
         </Link>
+
+        <div className="app-footer">
+        {leaderboardMessage.bind(this)()}
+        </div>
       </div>
     );
   }
