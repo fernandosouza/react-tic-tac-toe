@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders congratulations message 1`] = `
+<div
+  className="leader-board"
+>
+  <h1>
+    Leaderboard
+  </h1>
+  <div>
+    <p>
+      Congratulations, 
+      <strong>
+        React TicTacToe
+      </strong>
+      !!! Now you are in our leaderboard.
+    </p>
+    <p>
+      Are you ready to 
+      <a
+        href=""
+      >
+        play again
+      </a>
+       aganst you partner or start a
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        new game
+      </a>
+      ?
+    </p>
+  </div>
+  <ul>
+    <li>
+      Fernando
+    </li>
+    <li>
+      Souza
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`renders correctly 1`] = `
+<div
+  className="leader-board"
+>
+  <h1>
+    Leaderboard
+  </h1>
+  <div>
+    <p>
+      We do not have leaders to how. Why don't you 
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        play
+      </a>
+       to see if you can put your name here?
+    </p>
+    <a
+      href="/"
+      onClick={[Function]}
+    >
+      New game
+    </a>
+  </div>
+  <ul>
+    <li>
+      Fernando
+    </li>
+    <li>
+      Souza
+    </li>
+  </ul>
+</div>
+`;

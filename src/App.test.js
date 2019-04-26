@@ -6,6 +6,11 @@ import { mount } from 'enzyme';
 import { MemoryRouter as Router } from 'react-router-dom';
 import TicTacToe from './ticTacToe/TicTacToe';
 
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+
 const params = {
   firstPlayer: 'Fernando',
   secondPlayer: 'Souza'

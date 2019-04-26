@@ -1,8 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Board from './Board';
 import renderer from 'react-test-renderer';
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
+
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Board', () => {
   let filledSlots;
