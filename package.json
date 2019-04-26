@@ -11,18 +11,18 @@
   ],
   "bugs": "https://github.com/fernandosouza/react-tic-tac-toe/issues",
   "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-router-dom": "^4.1.1",
+    "react": "16.3.2",
+    "react-dom": "16.3.2",
+    "react-router-dom": "4.2.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "enzyme": "^2.8.2",
+    "enzyme": "3.3.0",
     "gh-pages": "^0.12.0",
-    "node-sass": "^4.5.2",
-    "react-router-test-context": "^0.1.0",
-    "react-scripts": "0.9.5",
-    "react-test-renderer": "^15.5.4"
+    "node-sass": "4.9.0",
+    "react-router-test-context": "0.1.0",
+    "react-scripts": "1.1.4",
+    "react-test-renderer": "16.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
