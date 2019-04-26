@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Board renders 9 slots 1`] = `
+<div
+  className="board"
+>
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`Board renders filled slots 1`] = `
+<div
+  className="board"
+>
+  <div
+    className="board-slot filled player1"
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot filled player2"
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+  <div
+    className="board-slot "
+    onClick={[Function]}
+  />
+</div>
+`;

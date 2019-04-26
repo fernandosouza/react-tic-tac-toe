@@ -16,7 +16,5 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-__snapshots__
-
 # ignoring css
 src/**/*.css

@@ -3,6 +3,11 @@ import Setup from './Setup';
 import { shallow } from 'enzyme';
 import TicTacToe from '../ticTacToe/TicTacToe';
 
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+
 const match = {
   params: {
     firstPlayer: 'A',
