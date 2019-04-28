@@ -7,10 +7,5 @@ before_script:
   - yarn run build-css
 script:
   - travis_wait yarn test
-deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
-  on:
-    branch: master
+after_success:
+  - yarn deploy
