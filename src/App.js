@@ -18,7 +18,7 @@ class App extends Component {
     }
 
     this.state = {
-      filledSlots: new Map(),
+      filledSlots: new Map(this.props.game.getBoard()),
       winnerSlots: []
     };
     this.props.game.onGameEnd = this.onGameEnd_.bind(this);

@@ -8,9 +8,9 @@ import {
   Route
 } from 'react-router-dom';
 
-let game = new TicTacToe();
+const game = new TicTacToe();
 
-export default props => {
+export default () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <div>
