@@ -23,6 +23,7 @@ class App extends Component {
     };
     this.props.game.onGameEnd = this.onGameEnd_.bind(this);
     this.storage_ = new Storage();
+    this.onSlotClick_ = this.handleSlotClick_.bind(this);
   }
 
   /**
@@ -70,13 +71,13 @@ class App extends Component {
    * @param {Number} index The Board Slot index.
    * @private
    **/
-  onSlotClick_(index) {
+  handleSlotClick_(index) {
     if (this.state.winnerSlots.length > 0) {
       return;
     }
     this.props.game.fillSlot(index);
     this.setState({
-      filledSlots: this.props.game.getBoard()
+      filledSlots: new Map(this.props.game.getBoard())
     });
   }
 
@@ -100,7 +101,7 @@ class App extends Component {
         <Board
           winnerSlots={this.state.winnerSlots}
           filledSlots={this.state.filledSlots}
-          onSlotClick={this.onSlotClick_.bind(this)}
+          onSlotClick={this.onSlotClick_}
         />
 
         <Link className="button new-game-button" to="/">
@@ -108,7 +109,7 @@ class App extends Component {
         </Link>
 
         <div className="app-footer">
-        {leaderboardMessage.bind(this)()}
+        {leaderboardMessage()}
         </div>
       </div>
     );

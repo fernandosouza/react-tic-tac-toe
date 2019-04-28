@@ -13,6 +13,11 @@ class Board extends PureComponent {
   constructor(props) {
     super(props);
     this.slots = Array(9).fill(0, 0, 9);
+    this.slotClick_ = this.handleSlotClick_.bind(this);
+  }
+
+  handleSlotClick_(index) {
+    this.props.onSlotClick(index);
   }
 
   /**
@@ -28,9 +33,7 @@ class Board extends PureComponent {
           winner={winnerSlots.includes(index)}
           player={filledSlots.get(index)}
           index={index}
-          onSlotClick={() => {
-            this.props.onSlotClick(index);
-          }}
+          onSlotClick={this.slotClick_}
         />
       );
     })

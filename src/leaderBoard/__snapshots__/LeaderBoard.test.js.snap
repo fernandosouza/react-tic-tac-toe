@@ -18,7 +18,7 @@ exports[`renders congratulations message 1`] = `
     <p>
       Are you ready to 
       <a
-        href=""
+        href="#"
       >
         play again
       </a>

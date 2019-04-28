@@ -14,7 +14,7 @@ export const Slot = props => {
   return (
     <div
       className={`board-slot ${filledClass}`}
-      onClick={props.onSlotClick}
+      onClick={() => props.onSlotClick(props.index)}
     />
   );
 };

@@ -11,6 +11,10 @@ class Setup extends Component {
 
     this.props.game.clearBoard();
 
+    this.onPlayerTwoNameChange_ = this.onPlayerTwoNameChange_.bind(this);
+    this.onPlayerOneNameChange_ = this.onPlayerOneNameChange_.bind(this);
+    this.onFormSubmit_ = this.onFormSubmit_.bind(this);
+
     this.state = {
       playerOneName: '',
       playerTwoName: '',
@@ -80,7 +84,7 @@ class Setup extends Component {
               type="text"
               value={this.state.playerOneName}
               placeholder="Player one"
-              onChange={this.onPlayerOneNameChange_.bind(this)}
+              onChange={this.onPlayerOneNameChange_}
               id="playerOne" />
           </div>
 
@@ -92,11 +96,11 @@ class Setup extends Component {
               type="text"
               value={this.state.playerTwoName}
               placeholder="Player two"
-              onChange={this.onPlayerTwoNameChange_.bind(this)}
+              onChange={this.onPlayerTwoNameChange_}
               id="playerTwo" />
           </div>
         </div>
-        <button disabled={disabled} onClick={this.onFormSubmit_.bind(this)}> Start! </button>
+        <button disabled={disabled} onClick={this.onFormSubmit_}> Start! </button>
       </div>
     );
   }

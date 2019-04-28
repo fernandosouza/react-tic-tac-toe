@@ -3,5 +3,6 @@
 exports[`Slot renders slot 1`] = `
 <div
   className="board-slot "
+  onClick={[Function]}
 />
 `;

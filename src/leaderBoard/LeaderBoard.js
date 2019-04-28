@@ -47,7 +47,7 @@ class LeaderBoard extends Component {
         </p>
 
         <p>
-          Are you ready to <a href="" onClick={this.props.history.goBack}>
+          Are you ready to <a href="#" onClick={this.props.history.goBack}>
           play again</a> aganst you partner or start a 
           <Link to="/">new game</Link>?
         </p>
