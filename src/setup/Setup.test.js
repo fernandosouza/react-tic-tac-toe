@@ -47,7 +47,7 @@ describe('Setup', () => {
     const wrapper = shallow(<Setup history={[]} game={game} />);
     const playerOneInput = wrapper.find('#playerOne');
     const playerTwoInput = wrapper.find('#playerTwo');
-    
+
     playerOneInput.value = 'Fernando';
     playerTwoInput.value = 'Fernando';
     playerOneInput.simulate('change', {target: {value: playerOneInput.value}});
@@ -55,5 +55,11 @@ describe('Setup', () => {
 
     wrapper.find('button').simulate('click', new Event('click'));
     expect(onFinishSetupMock.mock.calls.length).toBe(0);
+  });
+
+  it('should reset the previous board game', () => {
+    game.clearBoard = jest.fn();
+    shallow(<Setup history={[]} game={game} />);
+    expect(game.clearBoard.mock.calls.length).toBe(1);
   });
 });

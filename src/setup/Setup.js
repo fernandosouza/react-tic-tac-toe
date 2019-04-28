@@ -9,6 +9,8 @@ class Setup extends Component {
   constructor(props) {
     super(props);
 
+    this.props.game.clearBoard();
+
     this.state = {
       playerOneName: '',
       playerTwoName: '',

@@ -136,6 +136,10 @@ class TicTacToe {
     return this.board_;
   }
 
+  clearBoard() {
+    this.board_.clear();
+  }
+
   /**
    * Checks all the possibilities of have a winner and return the Player instance.
    * @returns {Object|undefined} Returns the currentPlayer if a winner is found

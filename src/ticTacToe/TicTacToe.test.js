@@ -96,4 +96,15 @@ describe('Game', () => {
     expect(onGameFinishMock.mock.calls).toHaveLength(1);
     expect(onGameFinishMock.mock.calls[0][0]).toBeUndefined();
   });
+
+  it('should clear board', () => {
+    game.fillSlot(0);
+    game.fillSlot(2);
+
+    expect(game.getBoard().size).toBe(2);
+
+    game.clearBoard();
+
+    expect(game.getBoard().size).toBe(0);
+  });
 });
