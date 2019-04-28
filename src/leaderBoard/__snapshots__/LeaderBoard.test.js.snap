@@ -17,11 +17,11 @@ exports[`renders congratulations message 1`] = `
     </p>
     <p>
       Are you ready to 
-      <a
-        href="#"
+      <button
+        type="button"
       >
         play again
-      </a>
+      </button>
        aganst you partner or start a
       <a
         href="/"
