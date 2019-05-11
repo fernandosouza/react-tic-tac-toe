@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Board from './board/Board';
 import Storage from './storage/Storage';
-import { Link } from 'react-router-dom'
-import './App.css';
+import { Link } from 'react-router-dom';
+import './App.scss';
 
 /**
  * Initialize the game asking for players information. Manage players
@@ -55,11 +55,11 @@ class App extends Component {
    **/
   onGameEnd_(winner) {
     if (winner) {
-      let gameLeaderBoard = this.storage_.getData();
+      const gameLeaderBoard = this.storage_.getData();
       this.storage_.update([winner.player.name, ...gameLeaderBoard]);
       this.setState({
         winnerSlots: winner.slots,
-        winner: winner
+        winner
       });
     }
   }
