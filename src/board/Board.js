@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Slot } from './Slot';
-import './board.css';
+import './board.scss';
 
 /* *
  * Class that renders the game board.
@@ -36,7 +36,7 @@ class Board extends PureComponent {
           onSlotClick={this.slotClick_}
         />
       );
-    })
+    });
   }
 
   /**

@@ -1,53 +1,42 @@
 @import "../variables.scss";
 @import "../mixins.scss";
 
-$grid-border: 1px solid rgba(255, 255, 255, .1);
-
-@mixin build-board ($board-size: 500px) {
-  $grid-size: $board-size / 3;
-
-  .board {
-    display: flex;
-    flex-wrap: wrap;
-    height: $board-size;
-    width: $board-size;
-    outline: $grid-border;
-
-    .filled {
-      @include background-transition();
-    }
-
-    .filled.winner {
-      animation: win infinite alternate ease-in-out .24s;
-    }
-  }
-
-  .board-slot {
-    background-color: $base-color;
-    border: $grid-border;
-    cursor: pointer;
-    height: $grid-size;
-    width: $grid-size;
-
-    &:hover:not(.filled) {
-      background-color: $base-color + 10%;
-      @include background-transition(150ms);
-    }
-  }
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  outline: var(--grid-border);
+  width: var(--board-size);
 }
 
-@include build-board(200px);
+.board-slot {
+  --dimensions: calc(var(--board-size) / 3);
 
-@media only screen and (min-device-width : 768px) {
-  @include build-board();  
+  background-color: var(--base-color);
+  border: var(--grid-border);
+  height: var(--dimensions);
+  width: var(--dimensions);
+  cursor: pointer;
+}
+
+.board-slot:hover:not(.filled) {
+  background-color: #3e5368;
+  @include background-transition(150ms);
+}
+
+.filled {
+  @include background-transition();
+}
+
+.filled.winner {
+  animation: win infinite alternate ease-in-out .54s;
 }
 
 @keyframes win {
   0% {
-    background-size: 80%;
+    background-size: 40%;
   }
 
   100% {
-    background-size: 70%;
+    background-size: 50%;
   }
 }
