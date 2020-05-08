@@ -2,42 +2,51 @@
 
 exports[`Board renders 9 slots 1`] = `
 <div
-  className="board"
+  className="sc-bwzfXH fkTWXJ"
 >
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot0"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot1"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot2"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot3"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot4"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot5"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot6"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot7"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot8"
     onClick={[Function]}
   />
 </div>
@@ -45,42 +54,51 @@ exports[`Board renders 9 slots 1`] = `
 
 exports[`Board renders filled slots 1`] = `
 <div
-  className="board"
+  className="sc-bwzfXH fkTWXJ"
 >
   <div
-    className="board-slot filled player1"
+    className="sc-bdVaJa heJmyo"
+    data-testid="Slot0"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot1"
     onClick={[Function]}
   />
   <div
-    className="board-slot filled player2"
+    className="sc-bdVaJa kiPKqZ"
+    data-testid="Slot2"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot3"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot4"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot5"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot6"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot7"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
+    data-testid="Slot8"
     onClick={[Function]}
   />
 </div>

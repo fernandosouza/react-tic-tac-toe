@@ -1,6 +1,13 @@
 import React, { PureComponent } from 'react';
+import styled from 'styled-components';
 import { Slot } from './Slot';
-import './board.scss';
+
+const BoardWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  outline: var(--grid-border);
+  width: var(--board-size);
+`;
 
 /* *
  * Class that renders the game board.
@@ -26,7 +33,7 @@ class Board extends PureComponent {
    */
   renderSlots_() {
     let { filledSlots, winnerSlots } = this.props;
-    return this.slots.map((slot, index) => {
+    return this.slots.map((_, index) => {
       return (
         <Slot
           key={index}
@@ -44,9 +51,9 @@ class Board extends PureComponent {
    */
   render() {
     return (
-      <div className="board">
+      <BoardWrapper>
         {this.renderSlots_()}
-      </div>
+      </BoardWrapper>
     );
   }
 }
