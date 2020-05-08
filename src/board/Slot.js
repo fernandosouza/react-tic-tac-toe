@@ -49,6 +49,7 @@ const SlotWrapper = styled.div`
 export const Slot = props => {
   return (
     <SlotWrapper
+      data-testid={`Slot${props.index}`}
       player={props.player}
       winner={props.winner}
       onClick={() => props.onSlotClick(props.index)}
