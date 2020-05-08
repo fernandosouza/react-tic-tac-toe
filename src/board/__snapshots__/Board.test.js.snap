@@ -2,42 +2,42 @@
 
 exports[`Board renders 9 slots 1`] = `
 <div
-  className="board"
+  className="sc-bwzfXH fkTWXJ"
 >
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
 </div>
@@ -45,42 +45,42 @@ exports[`Board renders 9 slots 1`] = `
 
 exports[`Board renders filled slots 1`] = `
 <div
-  className="board"
+  className="sc-bwzfXH fkTWXJ"
 >
   <div
-    className="board-slot filled player1"
+    className="sc-bdVaJa heJmyo"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot filled player2"
+    className="sc-bdVaJa kiPKqZ"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
   <div
-    className="board-slot "
+    className="sc-bdVaJa gigbzF"
     onClick={[Function]}
   />
 </div>

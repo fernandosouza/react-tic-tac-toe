@@ -48,7 +48,7 @@ describe('Board', () => {
       winnerSlots={winnerSlots}
       onSlotClick={callbackMock}
     />);
-    wrapper.find('.board-slot').at(0).simulate('click');
+    wrapper.find('Slot').at(0).simulate('click');
     expect(callbackMock.mock.calls.length).toBe(1);
   });
 
@@ -59,7 +59,7 @@ describe('Board', () => {
       winnerSlots={winnerSlots}
       onSlotClick={callbackMock}
     />);
-    wrapper.find('.board-slot').at(1).simulate('click');
+    wrapper.find('Slot').at(1).simulate('click');
     expect(callbackMock.mock.calls[0][0]).toBe(1);
   });
 });
