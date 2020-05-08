@@ -24,9 +24,9 @@
     "enzyme": "3.9.0",
     "enzyme-adapter-react-16": "1.12.1",
     "gh-pages": "^0.12.0",
-    "node-sass": "4.9.0",
+    "node-sass": "4.14.1",
     "react-router-test-context": "0.1.0",
-    "react-scripts": "3.2.0",
+    "react-scripts": "3.4.1",
     "react-test-renderer": "16.3.2"
   },
   "scripts": {
