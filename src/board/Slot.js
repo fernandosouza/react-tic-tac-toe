@@ -62,8 +62,8 @@ export const Slot = props => {
     >
       {
         {
-          1: <Player1 winner={props.winner} />,
-          2: <Player2 winner={props.winner} />
+          1: <Player1 winner={props.winner || undefined} />,
+          2: <Player2 winner={props.winner || undefined} />
         }[props.player]
       }
     </SlotWrapper>

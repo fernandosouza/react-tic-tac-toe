@@ -2,7 +2,7 @@
 
 exports[`Slot renders slot 1`] = `
 <div
-  className="sc-bdVaJa gigbzF"
+  className="sc-htpNat elABiC"
   data-testid="Slotundefined"
   onClick={[Function]}
 />
