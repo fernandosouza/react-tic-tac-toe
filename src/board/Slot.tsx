@@ -1,9 +1,10 @@
-import React, { useContext, useState, useCallback, useEffect } from 'react';
+import React, { useContext, useState, FC, useEffect } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
 import { ReactComponent as X } from './x.svg';
 import { ReactComponent as Circle } from './circle.svg';
 import { GameContext } from '../GameContext';
+import { WinnerSlots } from '../ticTacToe/TicTacToe';
 
 const scale = keyframes`
   0% {
@@ -15,7 +16,7 @@ const scale = keyframes`
   }
 `;
 
-const Player1 = styled(X)`
+const Player1 = styled(X)<{ winner?: boolean }>`
   width: 100px;
   height: 100px;
 
@@ -24,7 +25,7 @@ const Player1 = styled(X)`
   `}
 `
 
-const Player2 = styled(Circle)`
+const Player2 = styled(Circle)<{ winner?: boolean }>`
   width: 100px;
   height: 100px;
 
@@ -33,7 +34,7 @@ const Player2 = styled(Circle)`
   `}
 `
 
-const SlotWrapper = styled.div`
+const SlotWrapper = styled.div<{ player: boolean }>`
   --dimensions: calc(var(--board-size) / 3);
 
   /*TODO: How to move this block to a shared place? */
@@ -55,34 +56,36 @@ const SlotWrapper = styled.div`
   `}
 `;
 
-export const Slot = props => {
-  const [player, setPlayer] = useState(null);
-  const [winner, setWinner] = useState(null);
+export const Slot: FC<{ index: number }> = props => {
+  const [player, setPlayer] = useState<null | number>(null);
+  const [winner, setWinner] = useState<null | WinnerSlots>(null);
   const gameContext = useContext(GameContext);
 
-  const onSlotClick = (index) => {
-    gameContext.game.fillSlot(index);
-    if (gameContext.game.getBoard().get(index)) {
-      setPlayer(gameContext.game.getBoard().get(index));
+  const onSlotClick = (index: number) => {
+    gameContext.game!.fillSlot(index);
+    if (gameContext.game!.getBoard().get(index)) {
+      setPlayer(gameContext.game!.getBoard().get(index));
     }
   };
 
   useEffect(() => {
-    gameContext.game.on('gameEnd', setWinner);
+    gameContext.game!.on('gameEnd', setWinner);
     return () => {
-      gameContext.game.off('gameEnd', setWinner);
+      gameContext.game!.off('gameEnd', setWinner);
     }
   }, []);
 
   return (
     <SlotWrapper
+      player={!!player}
       data-testid={`Slot${props.index}`}
       onClick={() => onSlotClick(props.index)}
     >
       {
         {
-          1: <Player1 winner={winner && winner.slots.includes(props.index) || undefined} />,
-          2: <Player2 winner={winner && winner.slots.includes(props.index) || undefined} />
+          1: <Player1 winner={winner && winner!.slots.includes(props.index) || undefined} />,
+          2: <Player2 winner={winner && winner!.slots.includes(props.index) || undefined} />
+          //@ts-ignore
         }[player]
       }
     </SlotWrapper>

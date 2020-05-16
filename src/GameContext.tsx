@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext } from 'react';
 import TicTacToe from './ticTacToe/TicTacToe';
 
 export const GameContext = createContext<{

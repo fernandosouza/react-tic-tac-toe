@@ -1,34 +1,42 @@
-import PlayersManager from '../ticTacToe/PlayersManager';
-import { isFunction } from 'underscore';
+import PlayersManager from './PlayersManager';
+import Player from './Player';
+
+export type EventTypes = 'gameEnd';
+export type WinnerSlots = { player: Player, slots: any }
 
 class EventEmiiter {
+  private subscribers: Map<EventTypes, Function[]>;
+
   constructor() {
     this.subscribers = new Map();
   }
 
-  on(event, fn) {
+  on(event: EventTypes, fn: Function) {
     if (!this.subscribers.get(event)) {
       this.subscribers.set(event, []);
     }
 
-    this.subscribers.get(event).push(fn);
+    this.subscribers.get(event)!.push(fn);
   }
 
-  off(event, fn) {
+  off(event: EventTypes, fn: Function) {
     if (this.subscribers.get(event)) {
-      this.subscribers.set(event, this.subscribers.get(event).filter(subscribed => fn !== subscribed));
+      this.subscribers.set(event, this.subscribers.get(event)!.filter(subscribed => fn !== subscribed));
     }
   }
 
-  dispatch(event, arg) {
+  dispatch(event: EventTypes, arg: any) {
     if (this.subscribers.get(event)) {
-      this.subscribers.get(event).forEach(fn => fn.call(null, arg));
+      this.subscribers.get(event)!.forEach(fn => fn.call(null, arg));
     }
   }
 }
 
 class TicTacToe extends EventEmiiter {
-  constructor(playerOne, playerTwo) {
+  private board_: Map<any, any>;
+  private playersManager_: PlayersManager;
+
+  constructor(playerOne?: string, playerTwo?: string) {
     super();
     this.board_ = new Map();
     this.playersManager_ = new PlayersManager();
@@ -38,7 +46,7 @@ class TicTacToe extends EventEmiiter {
     }
   }
 
-  checkSlots_(slots, playerId) {
+  checkSlots_(slots: number[], playerId: number) {
     if (slots.length < 3) {
       return;
     }
@@ -59,7 +67,7 @@ class TicTacToe extends EventEmiiter {
    * it returns false.
    * @private
    **/
-  checkColumns_(playerId) {
+  checkColumns_(playerId: number) {
     return (
       this.checkSlots_([0, 3, 6], playerId) ||
       this.checkSlots_([1, 4, 7], playerId) ||
@@ -75,7 +83,7 @@ class TicTacToe extends EventEmiiter {
    * a player, otherwise, false.
    * @private
    **/
-  checkDiagonalUpLeft_(playerId) {
+  checkDiagonalUpLeft_(playerId: number) {
     return this.checkSlots_([0, 4, 8], playerId);
   }
 
@@ -87,7 +95,7 @@ class TicTacToe extends EventEmiiter {
    * a player, otherwise, false.
    * @private
    **/
-  checkDiagonalUpRight_(playerId) {
+  checkDiagonalUpRight_(playerId: number) {
     return this.checkSlots_([2, 4, 6], playerId);
   }
 
@@ -99,7 +107,7 @@ class TicTacToe extends EventEmiiter {
    * @returns {boolean} Returns true if a matched line is found, otherwise, false.
    * @private
    **/
-  checkLines_(playerId) {
+  checkLines_(playerId: number) {
     return (
       this.checkSlots_([0, 1, 2], playerId) ||
       this.checkSlots_([3, 4, 5], playerId) ||
@@ -113,16 +121,8 @@ class TicTacToe extends EventEmiiter {
    * @param {Number} currentPlayerId The player id.
    * @private
    **/
-  checkSlot_(index, currentPlayerId) {
+  checkSlot_(index: Number, currentPlayerId: number) {
     return this.board_.get(index) === currentPlayerId;
-  }
-
-  /**
-   * Calls the onGameEnd listener callback with the winner's instance.
-   * @param {Object|undefined} winner The user who won the game.
-   **/
-  onEndGame_(winner) {
-    this.dispatch('gameEnd', winner);
   }
 
   /**
@@ -130,7 +130,7 @@ class TicTacToe extends EventEmiiter {
    * if it has, do not call the next game turn and end the game.
    * @param {Number} index the slot index.
    **/
-  fillSlot(index) {
+  fillSlot(index: Number) {
     let currentPlayer_ = this.playersManager_.getCurrentPlayer();
     if (this.board_.get(index)) {
       return;
@@ -144,7 +144,7 @@ class TicTacToe extends EventEmiiter {
     let winner = this.getWinner_();
 
     if (winner || this.board_.size === 9) {
-      this.onEndGame_(winner);
+      this.dispatch('gameEnd', winner);
     } else {
       this.playersManager_.nextPlayerTurn();
     }
@@ -167,7 +167,7 @@ class TicTacToe extends EventEmiiter {
    * @returns {Object|undefined} Returns the currentPlayer if a winner is found
    * @private
    **/
-  getWinner_() {
+  getWinner_(): WinnerSlots | undefined {
     let currentPlayer = this.playersManager_.getCurrentPlayer();
     let playerId = currentPlayer.id;
     let hasWinner =
