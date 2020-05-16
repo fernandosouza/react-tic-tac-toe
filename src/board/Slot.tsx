@@ -16,7 +16,7 @@ const scale = keyframes`
   }
 `;
 
-const Player1 = styled(X)<{ winner?: boolean }>`
+const Player1 = styled(X) <{ winner?: boolean }>`
   width: 100px;
   height: 100px;
 
@@ -25,7 +25,7 @@ const Player1 = styled(X)<{ winner?: boolean }>`
   `}
 `
 
-const Player2 = styled(Circle)<{ winner?: boolean }>`
+const Player2 = styled(Circle) <{ winner?: boolean }>`
   width: 100px;
   height: 100px;
 
@@ -58,7 +58,7 @@ const SlotWrapper = styled.button<{ player: boolean }>`
 
 export const Slot: FC<{ index: number }> = props => {
   const [player, setPlayer] = useState<null | number>(null);
-  const [winner, setWinner] = useState<null | WinnerSlots>(null);
+  const [winner, setWinner] = useState<boolean>(false);
   const gameContext = useContext(GameContext);
 
   const onSlotClick = (index: number) => {
@@ -69,9 +69,14 @@ export const Slot: FC<{ index: number }> = props => {
   };
 
   useEffect(() => {
-    gameContext.game!.on('gameEnd', setWinner);
+    const gameEndSubscriber = (winner: WinnerSlots) => {
+      if (winner.slots.includes(props.index)) {
+        setWinner(true);
+      }
+    }
+    gameContext.game!.on('gameEnd', gameEndSubscriber);
     return () => {
-      gameContext.game!.off('gameEnd', setWinner);
+      gameContext.game!.off('gameEnd', gameEndSubscriber);
     }
   }, []);
 
@@ -85,8 +90,8 @@ export const Slot: FC<{ index: number }> = props => {
     >
       {
         {
-          1: <Player1 winner={winner && winner!.slots.includes(props.index) || undefined} />,
-          2: <Player2 winner={winner && winner!.slots.includes(props.index) || undefined} />
+          1: <Player1 winner={winner} />,
+          2: <Player2 winner={winner} />
           //@ts-ignore
         }[player]
       }
