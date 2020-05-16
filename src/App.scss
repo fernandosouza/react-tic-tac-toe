@@ -62,7 +62,7 @@ input {
   }
 }
 
-button, .button {
+.button {
   @include background-transition(180ms, ease-in-out);
 
   background-color: $success-color;

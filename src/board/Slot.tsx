@@ -34,7 +34,7 @@ const Player2 = styled(Circle)<{ winner?: boolean }>`
   `}
 `
 
-const SlotWrapper = styled.div<{ player: boolean }>`
+const SlotWrapper = styled.button<{ player: boolean }>`
   --dimensions: calc(var(--board-size) / 3);
 
   /*TODO: How to move this block to a shared place? */
@@ -77,6 +77,8 @@ export const Slot: FC<{ index: number }> = props => {
 
   return (
     <SlotWrapper
+      disabled={!!winner}
+      type="button"
       player={!!player}
       data-testid={`Slot${props.index}`}
       onClick={() => onSlotClick(props.index)}
