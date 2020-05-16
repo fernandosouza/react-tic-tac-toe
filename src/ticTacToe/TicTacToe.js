@@ -1,12 +1,36 @@
 import PlayersManager from '../ticTacToe/PlayersManager';
 import { isFunction } from 'underscore';
 
-class TicTacToe {
-  onGameEnd;
+class EventEmiiter {
+  constructor() {
+    this.subscribers = new Map();
+  }
 
-  constructor(playerOne, playerTwo, onGameEnd) {
+  on(event, fn) {
+    if (!this.subscribers.get(event)) {
+      this.subscribers.set(event, []);
+    }
+
+    this.subscribers.get(event).push(fn);
+  }
+
+  off(event, fn) {
+    if (this.subscribers.get(event)) {
+      this.subscribers.set(event, this.subscribers.get(event).filter(subscribed => fn !== subscribed));
+    }
+  }
+
+  dispatch(event, arg) {
+    if (this.subscribers.get(event)) {
+      this.subscribers.get(event).forEach(fn => fn.call(null, arg));
+    }
+  }
+}
+
+class TicTacToe extends EventEmiiter {
+  constructor(playerOne, playerTwo) {
+    super();
     this.board_ = new Map();
-    this.onGameEnd = onGameEnd;
     this.playersManager_ = new PlayersManager();
     if (playerOne && playerTwo) {
       this.playersManager_.addPlayer(playerOne);
@@ -98,9 +122,7 @@ class TicTacToe {
    * @param {Object|undefined} winner The user who won the game.
    **/
   onEndGame_(winner) {
-    if (isFunction(this.onGameEnd)) {
-      return this.onGameEnd(winner);
-    }
+    this.dispatch('gameEnd', winner);
   }
 
   /**

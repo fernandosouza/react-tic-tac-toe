@@ -21,7 +21,6 @@ class App extends Component {
       winnerSlots: []
     };
     this.storage_ = new Storage();
-    this.onSlotClick_ = this.handleSlotClick_.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +31,6 @@ class App extends Component {
     this.setState({
       filledSlots: new Map(this.context.game.getBoard())
     });
-    this.context.game.onGameEnd = this.onGameEnd_.bind(this);
   }
 
   /**
@@ -57,40 +55,6 @@ class App extends Component {
   }
 
   /**
-   * Callback method that will be called when the game is finished. It updates
-   * the local storage with the new winner and go to the Leaderboard page.
-   * @param {Object} winner The Player object.
-   * @private
-   **/
-  onGameEnd_(winner) {
-    if (winner) {
-      const gameLeaderBoard = this.storage_.getData();
-      this.storage_.update([winner.player.name, ...gameLeaderBoard]);
-      this.setState({
-        winnerSlots: winner.slots,
-        winner
-      });
-    }
-  }
-
-  /**
-   * Handles the click event on the each slot and updates the filledSlots
-   * state.
-   * the turn to the next player.
-   * @param {Number} index The Board Slot index.
-   * @private
-   **/
-  handleSlotClick_(index) {
-    if (this.state.winnerSlots.length > 0) {
-      return;
-    }
-    this.context.game.fillSlot(index);
-    this.setState({
-      filledSlots: new Map(this.context.game.getBoard())
-    });
-  }
-
-  /**
    * @inheritdoc
    **/
   render() {
@@ -108,17 +72,14 @@ class App extends Component {
 
     return (
       <div className="tic-tac-toe-app">
-        <Board
-          winnerSlots={this.state.winnerSlots}
-          onSlotClick={this.onSlotClick_}
-        />
+        <Board />
 
         <Link className="button new-game-button" to="/">
           New game
         </Link>
 
         <div className="app-footer">
-        {leaderboardMessage()}
+          {leaderboardMessage()}
         </div>
       </div>
     );
