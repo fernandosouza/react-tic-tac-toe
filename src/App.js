@@ -3,6 +3,7 @@ import Board from './board/Board';
 import Storage from './storage/Storage';
 import { Link } from 'react-router-dom';
 import './App.scss';
+import { GameContext } from './GameContext';
 
 /**
  * Initialize the game asking for players information. Manage players
@@ -10,20 +11,28 @@ import './App.scss';
  * @author Fernando Souza nandosouzafilho@gmail.com
  **/
 class App extends Component {
+  static contextType = GameContext;
+
   constructor(props) {
     super(props);
 
+    this.state = {
+      filledSlots: null,
+      winnerSlots: []
+    };
+    this.storage_ = new Storage();
+    this.onSlotClick_ = this.handleSlotClick_.bind(this);
+  }
+
+  componentDidMount() {
     if (this.hasNoPlayers_()) {
       this.setPlayersFromURL_();
     }
 
-    this.state = {
-      filledSlots: new Map(this.props.game.getBoard()),
-      winnerSlots: []
-    };
-    this.props.game.onGameEnd = this.onGameEnd_.bind(this);
-    this.storage_ = new Storage();
-    this.onSlotClick_ = this.handleSlotClick_.bind(this);
+    this.setState({
+      filledSlots: new Map(this.context.game.getBoard())
+    });
+    this.context.game.onGameEnd = this.onGameEnd_.bind(this);
   }
 
   /**
@@ -32,8 +41,8 @@ class App extends Component {
    **/
   setPlayersFromURL_() {
     const { firstPlayer, secondPlayer } = this.props.match.params;
-    this.props.game.playersManager_.addPlayer(firstPlayer);
-    this.props.game.playersManager_.addPlayer(secondPlayer);
+    this.context.game.playersManager_.addPlayer(firstPlayer);
+    this.context.game.playersManager_.addPlayer(secondPlayer);
   }
 
   /**
@@ -42,7 +51,7 @@ class App extends Component {
    * @private
    **/
   hasNoPlayers_() {
-    return this.props.game.playersManager_
+    return this.context.game.playersManager_
       .checkErros()
       .some(error => error.code === 'no_players');
   }
@@ -75,9 +84,9 @@ class App extends Component {
     if (this.state.winnerSlots.length > 0) {
       return;
     }
-    this.props.game.fillSlot(index);
+    this.context.game.fillSlot(index);
     this.setState({
-      filledSlots: new Map(this.props.game.getBoard())
+      filledSlots: new Map(this.context.game.getBoard())
     });
   }
 
@@ -96,11 +105,11 @@ class App extends Component {
         );
       }
     }
+
     return (
       <div className="tic-tac-toe-app">
         <Board
           winnerSlots={this.state.winnerSlots}
-          filledSlots={this.state.filledSlots}
           onSlotClick={this.onSlotClick_}
         />
 

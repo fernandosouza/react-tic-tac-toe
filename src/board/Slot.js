@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
 import { ReactComponent as X } from './x.svg';
 import { ReactComponent as Circle } from './circle.svg';
+import { GameContext } from '../GameContext';
 
 const scale = keyframes`
   0% {
@@ -55,16 +56,25 @@ const SlotWrapper = styled.div`
 `;
 
 export const Slot = props => {
+  const [player, setPlayer] = useState(null);
+  const gameContext = useContext(GameContext);
+  const onSlotClick = (index) => {
+    gameContext.game.fillSlot(index);
+    if (gameContext.game.getBoard().get(index)) {
+      setPlayer(gameContext.game.getBoard().get(index));
+    }
+  }
+
   return (
     <SlotWrapper
       data-testid={`Slot${props.index}`}
-      onClick={() => props.onSlotClick(props.index)}
+      onClick={() => onSlotClick(props.index)}
     >
       {
         {
           1: <Player1 winner={props.winner || undefined} />,
           2: <Player2 winner={props.winner || undefined} />
-        }[props.player]
+        }[player]
       }
     </SlotWrapper>
   );

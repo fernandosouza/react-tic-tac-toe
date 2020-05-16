@@ -32,13 +32,12 @@ class Board extends PureComponent {
    * @private 
    */
   renderSlots_() {
-    let { filledSlots, winnerSlots } = this.props;
+    let { winnerSlots } = this.props;
     return this.slots.map((_, index) => {
       return (
         <Slot
           key={index}
           winner={winnerSlots.includes(index)}
-          player={filledSlots.get(index)}
           index={index}
           onSlotClick={this.slotClick_}
         />
