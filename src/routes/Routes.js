@@ -2,7 +2,6 @@ import React from 'react';
 import App from '../App';
 import Setup from '../setup/Setup';
 import LeaderBoard from '../leaderBoard/LeaderBoard';
-import TicTacToe from '../ticTacToe/TicTacToe';
 import {
   BrowserRouter as Router,
   Route

@@ -1,13 +1,17 @@
 import Player from './Player';
 
+interface PlayerManagerError {
+  code: string
+}
+
 /**
  * Manages players providing a public API for adding players and sets which one 
  * is in the turn.
  **/
 class PlayersManager {
-  erros_ = [];
-  players_ = [];
-  currentPlayerIndex_ = 0;
+  private erros_: PlayerManagerError[] = [];
+  private players_: Player[] = [];
+  private currentPlayerIndex_ = 0;
 
   constructor(players = []) {
     this.createPlayers_(players);
@@ -18,7 +22,7 @@ class PlayersManager {
    * instance.
    * @param {String} playerName The player data to create a new Player instance.
    **/
-  addPlayer(playerName) {
+  addPlayer(playerName: string) {
     if (!playerName) {
       throw Error('Player configuration should be informed');
     }
@@ -55,7 +59,7 @@ class PlayersManager {
    * @param {Array<Object>} players A array of players data.
    * @private
    **/
-  createPlayers_(players) {
+  createPlayers_(players: Player[]) {
     this.players_ = players.map(player => {
       return new Player(player);
     });
@@ -96,7 +100,7 @@ class PlayersManager {
    * Changes the current player by providing its index.
    * @param {number} index The player index.
    **/
-  switchPlayer(index) {
+  switchPlayer(index: number) {
     if (index !== 0 && this.players_.length < index) {
       throw Error('Player not found');
     }
