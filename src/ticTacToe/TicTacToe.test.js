@@ -55,7 +55,7 @@ describe('Game', () => {
 
   it('should call a registered callback as soon as the game finish', () => {
     const onGameFinishMock = jest.fn();
-    game.onGameEnd = onGameFinishMock;
+    game.on('gameEnd', onGameFinishMock);
 
     game.fillSlot(0);
     game.fillSlot(3);
@@ -68,7 +68,7 @@ describe('Game', () => {
 
   it('should pass the winner as argument to the registered callback', () => {
     const onGameFinishMock = jest.fn();
-    game.onGameEnd = onGameFinishMock;
+    game.on('gameEnd', onGameFinishMock);
 
     game.fillSlot(0);
     game.fillSlot(3);
@@ -81,7 +81,7 @@ describe('Game', () => {
 
   it('should pass undefined as argument to the registered callback if no one won', () => {
     const onGameFinishMock = jest.fn();
-    game.onGameEnd = onGameFinishMock;
+    game.on('gameEnd', onGameFinishMock);
 
     game.fillSlot(0);
     game.fillSlot(2);

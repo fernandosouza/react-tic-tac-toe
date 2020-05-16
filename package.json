@@ -14,10 +14,11 @@
     "@testing-library/react": "10.0.4",
     "@types/jest": "25.2.1",
     "@types/testing-library__react": "10.0.1",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
     "react-router-dom": "5.0.0",
     "styled-components": "4.4.1",
+    "typescript": "3.9.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
@@ -27,7 +28,7 @@
     "node-sass": "4.14.1",
     "react-router-test-context": "0.1.0",
     "react-scripts": "3.4.1",
-    "react-test-renderer": "16.3.2"
+    "react-test-renderer": "16.13.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,10 +1,10 @@
 import React from 'react';
 import { Slot } from './Slot';
-import renderer from 'react-test-renderer';
+import { create } from 'react-test-renderer';
 
 describe('Slot', () => {
   it('renders slot', () => {
-    const slot = renderer.create(<Slot />).toJSON();
+    const slot = create(<Slot />).toJSON();
     expect(slot).toMatchSnapshot();
   });
 });

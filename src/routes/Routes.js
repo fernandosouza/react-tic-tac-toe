@@ -8,25 +8,27 @@ import {
   Route
 } from 'react-router-dom';
 
-const game = new TicTacToe();
+import { GameContextProvider } from '../GameContext';
 
 export default () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <div>
-        <Route exact path="/" render={route => {
-            return <Setup {...route} game={game} />;
+      <GameContextProvider>
+        <div>
+          <Route exact path="/" render={route => {
+            return <Setup {...route} />;
           }}
-        />
-        <Route path="/firstPlayer/:firstPlayer/secondPlayer/:secondPlayer" render={route => {
-            return <App {...route} game={game} />;
+          />
+          <Route path="/firstPlayer/:firstPlayer/secondPlayer/:secondPlayer" render={route => {
+            return <App {...route} />;
           }}
-        />
-        <Route path="/leaderboard" render={route => {
-            return <LeaderBoard {...route} game={game} />;
+          />
+          <Route path="/leaderboard" render={route => {
+            return <LeaderBoard {...route} />;
           }}
-        />
-      </div>
+          />
+        </div>
+      </GameContextProvider>
     </Router>
   );
 }
