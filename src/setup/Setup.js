@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { GameContext } from '../GameContext';
 import './setup.css';
 
 /**
@@ -6,10 +7,10 @@ import './setup.css';
  * component through a function named `onFinishSetup`.
  **/
 class Setup extends Component {
+  static contextType = GameContext;
+
   constructor(props) {
     super(props);
-
-    this.props.game.clearBoard();
 
     this.onPlayerTwoNameChange_ = this.onPlayerTwoNameChange_.bind(this);
     this.onPlayerOneNameChange_ = this.onPlayerOneNameChange_.bind(this);
@@ -19,6 +20,10 @@ class Setup extends Component {
       playerOneName: '',
       playerTwoName: '',
     }
+  }
+
+  componentDidMount() {
+    this.context.game.clearBoard();
   }
 
   /**
@@ -40,7 +45,7 @@ class Setup extends Component {
   onFormSubmit_(event) {
     event.preventDefault();
     let { playerOneName, playerTwoName } = this.state;
-    if (!this.props.game.playersManager_.checkErros().lenght) {
+    if (!this.context.game.playersManager_.checkErros().lenght) {
       this.props.history.push(`/firstPlayer/${playerOneName}/secondPlayer/${playerTwoName}`);
     }
   }
@@ -100,7 +105,7 @@ class Setup extends Component {
               id="playerTwo" />
           </div>
         </div>
-        <button disabled={disabled} onClick={this.onFormSubmit_}> Start! </button>
+        <button className="button" disabled={disabled} onClick={this.onFormSubmit_}> Start! </button>
       </div>
     );
   }
