@@ -82,7 +82,6 @@ export const Slot: FC<{ index: number }> = props => {
 
   return (
     <SlotWrapper
-      disabled={!!winner}
       type="button"
       player={!!player}
       data-testid={`Slot${props.index}`}
