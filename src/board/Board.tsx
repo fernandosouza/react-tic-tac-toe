@@ -9,17 +9,17 @@ const BoardWrapper = styled.div`
   width: var(--board-size);
 `;
 
+
 /* *
  * Class that renders the game board.
  * */
 class Board extends PureComponent {
-
+  private slots = Array(9).fill(0, 0, 9);
   /**
    * Creates a Board.
    */
-  constructor(props) {
+  constructor(props: any) {
     super(props);
-    this.slots = Array(9).fill(0, 0, 9);
   }
 
   /**
