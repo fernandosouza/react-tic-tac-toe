@@ -13,7 +13,7 @@ class PlayersManager {
   private players_: Player[] = [];
   private currentPlayerIndex_ = 0;
 
-  constructor(players = []) {
+  constructor(players: Player[] = []) {
     this.createPlayers_(players);
   }
 
@@ -24,14 +24,12 @@ class PlayersManager {
    **/
   addPlayer(playerName: string) {
     if (!playerName) {
-      throw Error('Player configuration should be informed');
+      throw Error('A player name should be provided');
     }
-    const player = {
+    this.players_.push(new Player({
       name: playerName,
-      id: this.players_.length + 1,
-      class: 'player' + this.players_.length + 1
-    };
-    this.players_.push(new Player(player));
+      id: this.players_.length + 1
+    }));
   }
 
   /**
