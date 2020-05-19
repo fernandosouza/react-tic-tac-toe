@@ -3,7 +3,7 @@
 exports[`Slot renders slot 1`] = `
 <button
   className="sc-htpNat elABiC"
-  data-testid="Slotundefined"
+  data-testid="Slot1"
   onClick={[Function]}
   type="button"
 />
