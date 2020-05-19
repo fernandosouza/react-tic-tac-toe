@@ -1,7 +1,7 @@
 import TicTacToe from './TicTacToe';
 
 describe('Game', () => {
-  let game;
+  let game: TicTacToe;
 
   beforeEach(() => {
     game = new TicTacToe('A', 'B');

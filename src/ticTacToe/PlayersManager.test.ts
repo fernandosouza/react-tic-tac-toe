@@ -1,15 +1,15 @@
 import PlayersManager from './PlayersManager';
-import Player from '../ticTacToe/Player';
+import Player from './Player';
 
-const playerMock = {
+const playerMock = new Player({
+  id: 1,
   name: 'Fernando',
-  class: 'className'
-};
+});
 
-const playersMock = [{
-  name: 'Souza',
-  class: 'className2'
-}, playerMock];
+const playersMock = [new Player({
+  id: 2,
+  name: 'Souza'
+}), playerMock];
 
 describe('PlayersManager', () => {
   it('should a player be a instance of Player', () => {
@@ -20,7 +20,7 @@ describe('PlayersManager', () => {
 
   it('should not throws an error if no parameter is passed to the constructor', () => {
     expect(() => {
-      const playersManager = new PlayersManager();
+      new PlayersManager();
     }).not.toThrowError();
   });
 
@@ -39,15 +39,8 @@ describe('PlayersManager', () => {
   it('should add a new player from public API', () => {
     const playersManager = new PlayersManager(playersMock);
     expect(playersManager.getPlayers().length).toBe(2);
-    playersManager.addPlayer(playerMock);
+    playersManager.addPlayer('Fernando');
     expect(playersManager.getPlayers().length).toBe(3);
-  });
-
-  it('should throws an error if no player configuration was passed to addPlayer', () => {
-    const playersManager = new PlayersManager(playersMock);
-    expect(() => {
-      playersManager.addPlayer();
-    }).toThrowError('Player configuration should be informed');
   });
 
   it('should change the current player', () => {
@@ -55,7 +48,7 @@ describe('PlayersManager', () => {
     let currentPlayer = playersManager.getCurrentPlayer();
     expect(currentPlayer.name).toBe('Souza');
     playersManager.switchPlayer(1);
-    
+
     currentPlayer = playersManager.getCurrentPlayer();
     expect(currentPlayer.name).toBe('Fernando');
   });
@@ -96,21 +89,21 @@ describe('PlayersManager', () => {
 
   it('should not allow duplicated names', () => {
     const players = [
-      { name: 'fernando', class: 'className' },
-      { name: 'Fernando', class: 'className' }
+      new Player({ name: 'fernando', id: 1 }),
+      new Player({ name: 'Fernando', id: 2 })
     ];
     const playersManager = new PlayersManager(players);
-    let currentPlayer = playersManager.getCurrentPlayer();
+    playersManager.getCurrentPlayer();
     expect(playersManager.checkErros()).toHaveLength(1);
   });
 
   it('should duplicated error code be `duplicated_names`', () => {
     const players = [
-      { name: 'fernando', class: 'className' },
-      { name: 'Fernando', class: 'className' }
+      new Player({ name: 'fernando', id: 1 }),
+      new Player({ name: 'Fernando', id: 2 })
     ];
     const playersManager = new PlayersManager(players);
-    let currentPlayer = playersManager.getCurrentPlayer();
+    playersManager.getCurrentPlayer();
     expect(playersManager.checkErros()[0]).toEqual({
       code: 'duplicated_names'
     });
