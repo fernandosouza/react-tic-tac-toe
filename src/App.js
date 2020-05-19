@@ -71,7 +71,7 @@ class App extends Component {
     }
 
     return (
-      <div className="tic-tac-toe-app">
+      <>
         <Board />
 
         <Link className="button new-game-button" to="/">
@@ -81,7 +81,7 @@ class App extends Component {
         <div className="app-footer">
           {leaderboardMessage()}
         </div>
-      </div>
+      </>
     );
   }
 }

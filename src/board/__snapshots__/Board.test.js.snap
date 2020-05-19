@@ -4,50 +4,59 @@ exports[`Board renders 9 slots 1`] = `
 <div
   className="sc-bxivhb ioDhEN"
 >
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot0"
     onClick={[Function]}
+    type="button"
   />
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot1"
     onClick={[Function]}
+    type="button"
   />
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot2"
     onClick={[Function]}
+    type="button"
   />
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot3"
     onClick={[Function]}
+    type="button"
   />
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot4"
     onClick={[Function]}
+    type="button"
   />
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot5"
     onClick={[Function]}
+    type="button"
   />
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot6"
     onClick={[Function]}
+    type="button"
   />
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot7"
     onClick={[Function]}
+    type="button"
   />
-  <div
+  <button
     className="sc-htpNat elABiC"
     data-testid="Slot8"
     onClick={[Function]}
+    type="button"
   />
 </div>
 `;
