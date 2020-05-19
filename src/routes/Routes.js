@@ -13,7 +13,7 @@ export default () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <GameContextProvider>
-        <div>
+        <div className="tic-tac-toe-app">
           <Route exact path="/" render={route => {
             return <Setup {...route} />;
           }}

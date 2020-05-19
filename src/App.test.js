@@ -2,15 +2,10 @@ import '../testHelpers/LocalStorageMock';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { mount } from 'enzyme';
 import { MemoryRouter as Router } from 'react-router-dom';
 import TicTacToe from './ticTacToe/TicTacToe';
 
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import { GameContextProvider, GameContext } from './GameContext';
-
-Enzyme.configure({ adapter: new Adapter() });
+import { GameContextProvider } from './GameContext';
 
 const params = {
   firstPlayer: 'Fernando',

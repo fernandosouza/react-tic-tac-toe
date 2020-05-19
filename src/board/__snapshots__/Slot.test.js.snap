@@ -1,9 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Slot renders slot 1`] = `
-<div
+<button
   className="sc-htpNat elABiC"
   data-testid="Slotundefined"
   onClick={[Function]}
+  type="button"
 />
 `;
