@@ -5,8 +5,11 @@ import { Slot } from './Slot';
 const BoardWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  outline: var(--grid-border);
-  width: var(--board-size);
+  border: 1px solid var(--grid-border-color);
+  width: calc(var(--board-size) + 2px);
+  box-shadow: -6px 26px 142px black;
+  border-radius: 9px;
+  overflow: hidden;
 `;
 
 
