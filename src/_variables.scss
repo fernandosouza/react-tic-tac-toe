@@ -1,7 +1,7 @@
 :root {
   --board-size: 200px;
-  --grid-border: insert 1px solid rgba(255, 255, 255, .1);
   --grid-border-color: rgba(255, 255, 255, .1);
+  --grid-border: 1px solid var(--grid-border-color);
   --base-color: #34495e;
   --base-color-lighter: #465f78;
   --danger-color: #e74c3c;

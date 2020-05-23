@@ -78,7 +78,7 @@ export const Slot: FC<{ index: number }> = props => {
     return () => {
       gameContext.game!.off('gameEnd', gameEndSubscriber);
     }
-  }, []);
+  }, [gameContext.game, props.index]);
 
   return (
     <SlotWrapper

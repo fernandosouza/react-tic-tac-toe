@@ -18,12 +18,6 @@ const BoardWrapper = styled.div`
  * */
 class Board extends PureComponent {
   private slots = Array(9).fill(0, 0, 9);
-  /**
-   * Creates a Board.
-   */
-  constructor(props: any) {
-    super(props);
-  }
 
   /**
    * Renders board slots that will be fufilled by gamers' pieces.
