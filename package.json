@@ -43,7 +43,7 @@
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build --user='Fernando Souza nandosouzafilho@gmail.com'"
+    "deploy": "gh-pages -d build --user='Fernando Souza <nandosouzafilho@gmail.com>'"
   },
   "jest": {
     "collectCoverageFrom": [
