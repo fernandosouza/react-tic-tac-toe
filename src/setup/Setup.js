@@ -151,7 +151,7 @@ class Setup extends Component {
               id="playerTwo" />
           </Collumn>
         </SetupPage>
-        <button className="button" disabled={disabled} onClick={this.onFormSubmit_}> Start! </button>
+        <button className="button" disabled={disabled} onClick={this.onFormSubmit_}> Let's rock! </button>
       </>
     );
   }
