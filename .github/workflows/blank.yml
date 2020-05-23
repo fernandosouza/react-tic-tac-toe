@@ -25,5 +25,9 @@ jobs:
       with: 
         node-version: 12
         
+        
+    - run: git config user.email "nandosouzafilho@gmail.com"
+    - run: git config user.name "Fernando Souza"
+        
     - run: npm ci
     - run: npm run deploy
