@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Storage from '../storage/Storage';
 import { Link } from 'react-router-dom'
-import './leader-board.css';
 
 class LeaderBoard extends Component {
   constructor(props) {
