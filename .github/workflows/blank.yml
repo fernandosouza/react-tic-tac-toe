@@ -26,5 +26,13 @@ jobs:
         node-version: 12
         
     - run: npm ci
-    - name: Release GitHub Pages
-      uses: igolopolosov/github-action-release-github-pages@v1
+    - run: npm run build
+    - 
+      name: Deploy to GitHub Pages
+      if: success()
+      uses: crazy-max/ghaction-github-pages@v2
+      with:
+        target_branch: gh-pages
+        build_dir: build
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
