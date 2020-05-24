@@ -7,27 +7,23 @@ import {
   Route
 } from 'react-router-dom';
 
-import { GameContextProvider } from '../GameContext';
-
 export default () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <GameContextProvider>
-        <div className="tic-tac-toe-app">
-          <Route exact path="/" render={route => {
-            return <Setup {...route} />;
-          }}
-          />
-          <Route path="/firstPlayer/:firstPlayer/secondPlayer/:secondPlayer" render={route => {
-            return <App {...route} />;
-          }}
-          />
-          <Route path="/leaderboard" render={route => {
-            return <LeaderBoard {...route} />;
-          }}
-          />
-        </div>
-      </GameContextProvider>
+      <div className="tic-tac-toe-app">
+        <Route exact path="/" render={route => {
+          return <Setup {...route} />;
+        }}
+        />
+        <Route path="/firstPlayer/:firstPlayer/secondPlayer/:secondPlayer" render={route => {
+          return <App {...route} />;
+        }}
+        />
+        <Route path="/leaderboard" render={route => {
+          return <LeaderBoard {...route} />;
+        }}
+        />
+      </div>
     </Router>
   );
 }

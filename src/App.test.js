@@ -5,8 +5,6 @@ import App from './App';
 import { MemoryRouter as Router } from 'react-router-dom';
 import TicTacToe from './ticTacToe/TicTacToe';
 
-import { GameContextProvider } from './GameContext';
-
 const params = {
   firstPlayer: 'Fernando',
   secondPlayer: 'Souza'
@@ -20,5 +18,5 @@ beforeEach(() => {
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Router><GameContextProvider><App match={{ params }} /></GameContextProvider></Router>, div);
+  ReactDOM.render(<Router><App match={{ params }} /></Router>, div);
 });
