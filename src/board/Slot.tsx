@@ -4,7 +4,7 @@ import styled, { css, keyframes } from 'styled-components';
 import { ReactComponent as X } from './x.svg';
 import { ReactComponent as Circle } from './circle.svg';
 import { GameContext } from '../GameContext';
-import { WinnerSlots } from '../ticTacToe/TicTacToe';
+import { WinnerSlots } from '../ticTacToe/TypesAndInterfaces';
 
 const scale = keyframes`
   0% {
@@ -57,14 +57,14 @@ const SlotWrapper = styled.button<{ player: boolean }>`
 `;
 
 export const Slot: FC<{ index: number }> = props => {
-  const [player, setPlayer] = useState<null | number>(null);
+  const [player, setPlayer] = useState<null | number>();
   const [winner, setWinner] = useState<boolean>(false);
   const gameContext = useContext(GameContext);
 
   const onSlotClick = (index: number) => {
     gameContext.game!.fillSlot(index);
-    if (gameContext.game!.getBoard().get(index)) {
-      setPlayer(gameContext.game!.getBoard().get(index));
+    if (gameContext.game!.getBoard()[index]) {
+      setPlayer(gameContext.game!.getBoard()[index]);
     }
   };
 

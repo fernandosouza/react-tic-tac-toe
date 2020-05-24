@@ -1,15 +1,12 @@
 import Player from './Player';
-
-interface PlayerManagerError {
-  code: string
-}
+import { GameErrors } from './TypesAndInterfaces';
 
 /**
  * Manages players providing a public API for adding players and sets which one 
  * is in the turn.
  **/
 class PlayersManager {
-  private erros_: PlayerManagerError[] = [];
+  private erros_: GameErrors[] = [];
   private players_: Player[] = [];
   private currentPlayerIndex_ = 0;
 

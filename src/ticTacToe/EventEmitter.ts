@@ -1,6 +1,7 @@
+import { EventEmitter } from './TypesAndInterfaces';
 export type EventTypes = 'gameEnd';
 
-export class EventEmitter {
+export class GameEventEmitter implements EventEmitter {
   private subscribers: Map<EventTypes, Function[]>;
 
   constructor() {

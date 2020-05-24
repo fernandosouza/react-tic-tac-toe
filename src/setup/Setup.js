@@ -91,7 +91,7 @@ class Setup extends Component {
   onFormSubmit_(event) {
     event.preventDefault();
     let { playerOneName, playerTwoName } = this.state;
-    if (!this.context.game.playersManager_.checkErros().lenght) {
+    if (!this.context.game.checkErrors().lenght) {
       this.props.history.push(`/firstPlayer/${playerOneName}/secondPlayer/${playerTwoName}`);
     }
   }

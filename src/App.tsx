@@ -4,33 +4,31 @@ import Storage from './storage/Storage';
 import { Link } from 'react-router-dom';
 import './App.scss';
 import { GameContext } from './GameContext';
+import { Slots, WinnerSlots, GameErrors } from './ticTacToe/TypesAndInterfaces';
 
 /**
  * Initialize the game asking for players information. Manage players
  * turns and set in the board filled slots.
  * @author Fernando Souza nandosouzafilho@gmail.com
  **/
-class App extends Component {
+class App extends Component<any, { winner: any, filledSlots: Slots | null, winnerSlots: WinnerSlots | null }> {
   static contextType = GameContext;
+  private storage_ = new Storage();
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
 
     this.state = {
+      winner: null,
       filledSlots: null,
-      winnerSlots: []
+      winnerSlots: null
     };
-    this.storage_ = new Storage();
   }
 
   componentDidMount() {
-    if (this.hasNoPlayers_()) {
+    if (this.checkErrors_()) {
       this.setPlayersFromURL_();
     }
-
-    this.setState({
-      filledSlots: new Map(this.context.game.getBoard())
-    });
   }
 
   /**
@@ -39,8 +37,8 @@ class App extends Component {
    **/
   setPlayersFromURL_() {
     const { firstPlayer, secondPlayer } = this.props.match.params;
-    this.context.game.playersManager_.addPlayer(firstPlayer);
-    this.context.game.playersManager_.addPlayer(secondPlayer);
+    this.context.game.playersManager.addPlayer(firstPlayer);
+    this.context.game.playersManager.addPlayer(secondPlayer);
   }
 
   /**
@@ -48,10 +46,8 @@ class App extends Component {
    * @returns {Boolean}
    * @private
    **/
-  hasNoPlayers_() {
-    return this.context.game.playersManager_
-      .checkErros()
-      .some(error => error.code === 'no_players');
+  checkErrors_() {
+    return this.context.game.checkErrors().some((error: GameErrors) => error.code === 'no_players');
   }
 
   /**

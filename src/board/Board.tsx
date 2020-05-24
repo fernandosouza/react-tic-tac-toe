@@ -1,6 +1,7 @@
-import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-import { Slot } from './Slot';
+import React, { PureComponent } from "react";
+import styled from "styled-components";
+import { Slot } from "./Slot";
+import { GameContext } from "../GameContext";
 
 const BoardWrapper = styled.div`
   display: flex;
@@ -12,25 +13,19 @@ const BoardWrapper = styled.div`
   overflow: hidden;
 `;
 
-
 /* *
  * Class that renders the game board.
  * */
 class Board extends PureComponent {
-  private slots = Array(9).fill(0, 0, 9);
+  static contextType = GameContext;
 
   /**
    * Renders board slots that will be fufilled by gamers' pieces.
-   * @private 
+   * @private
    */
-  renderSlots_() {
-    return this.slots.map((_, index) => {
-      return (
-        <Slot
-          key={index}
-          index={index}
-        />
-      );
+  private renderSlots() {
+    return this.context.game.getBoard().map((_: number | null, index: number) => {
+      return <Slot key={index} index={index} />;
     });
   }
 
@@ -38,11 +33,7 @@ class Board extends PureComponent {
    * @inheritdoc
    */
   render() {
-    return (
-      <BoardWrapper>
-        {this.renderSlots_()}
-      </BoardWrapper>
-    );
+    return <BoardWrapper>{this.renderSlots()}</BoardWrapper>;
   }
 }
 
