@@ -2,7 +2,7 @@
   "name": "tic-tac-toe",
   "version": "2.0.0",
   "private": true,
-  "homepage": "https://fernandosouza.github.io/react-tic-tac-toe/",
+  "homepage": "/",
   "author": "Fernando Souza <nandosouzafilho@gmail.com> (http://github.com/fernandosouza/)",
   "keywords": [
     "react",
