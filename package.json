@@ -21,9 +21,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-router-dom": "5.0.0",
-    "styled-components": "4.4.1",
-    "typescript": "3.9.2",
-    "underscore": "^1.8.3"
+    "underscore": "1.10.2"
   },
   "devDependencies": {
     "enzyme": "3.11.0",
@@ -31,7 +29,9 @@
     "node-sass": "4.14.1",
     "react-router-test-context": "0.1.0",
     "react-scripts": "3.4.1",
-    "react-test-renderer": "16.13.1"
+    "react-test-renderer": "16.13.1",
+    "styled-components": "5.1.1",
+    "typescript": "3.9.7"
   },
   "scripts": {
     "start": "react-scripts start",
