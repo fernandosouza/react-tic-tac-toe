@@ -1,20 +1,27 @@
-import PlayersManager from './PlayersManager';
+import PlayersManager, { IPlayersManager } from './PlayersManager';
 import Player from './Player';
 import { EventEmitter } from './EventEmitter';
 
-export type WinnerSlots = { player: Player, slots: any }
+export type WinnerSlots = { player: Player, slots: any };
+export type GameBoard = Map<any, any>;
+export interface ITicTacToe extends EventEmitter {
+  fillSlot: (index: number) => void,
+  getBoard: () => GameBoard
+  clearBoard: () => void;
+  playersManager: IPlayersManager;
+}
 
-class TicTacToe extends EventEmitter {
-  private board_: Map<any, any>;
-  private playersManager_: PlayersManager;
+class TicTacToe extends EventEmitter implements ITicTacToe {
+  private board_: GameBoard;
+  playersManager: IPlayersManager;
 
   constructor(playerOne?: string, playerTwo?: string) {
     super();
     this.board_ = new Map();
-    this.playersManager_ = new PlayersManager();
+    this.playersManager = new PlayersManager();
     if (playerOne && playerTwo) {
-      this.playersManager_.addPlayer(playerOne);
-      this.playersManager_.addPlayer(playerTwo);
+      this.playersManager.addPlayer(playerOne);
+      this.playersManager.addPlayer(playerTwo);
     }
   }
 
@@ -93,7 +100,7 @@ class TicTacToe extends EventEmitter {
    * @param {Number} currentPlayerId The player id.
    * @private
    **/
-  checkSlot_(index: Number, currentPlayerId: number) {
+  checkSlot_(index: number, currentPlayerId: number) {
     return this.board_.get(index) === currentPlayerId;
   }
 
@@ -102,8 +109,8 @@ class TicTacToe extends EventEmitter {
    * if it has, do not call the next game turn and end the game.
    * @param {Number} index the slot index.
    **/
-  fillSlot(index: Number) {
-    let currentPlayer_ = this.playersManager_.getCurrentPlayer();
+  fillSlot(index: number) {
+    const currentPlayer_ = this.playersManager.getCurrentPlayer();
     if (this.board_.get(index)) {
       return;
     }
@@ -118,7 +125,7 @@ class TicTacToe extends EventEmitter {
     if (winner || this.board_.size === 9) {
       this.dispatch('gameEnd', winner);
     } else {
-      this.playersManager_.nextPlayerTurn();
+      this.playersManager.nextPlayerTurn();
     }
   }
 
@@ -126,8 +133,8 @@ class TicTacToe extends EventEmitter {
    * Returns the list of filled slots.
    * @returns {Map<Object>} The game board.
    **/
-  getBoard() {
-    return this.board_;
+  getBoard(): GameBoard {
+    return new Map(this.board_);
   }
 
   clearBoard() {
@@ -140,7 +147,7 @@ class TicTacToe extends EventEmitter {
    * @private
    **/
   getWinner_(): WinnerSlots | undefined {
-    let currentPlayer = this.playersManager_.getCurrentPlayer();
+    const currentPlayer = this.playersManager.getCurrentPlayer();
     let playerId = currentPlayer.id;
     let hasWinner =
       this.checkLines_(playerId) ||

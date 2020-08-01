@@ -1,8 +1,8 @@
 import { createContext } from 'react';
-import TicTacToe from './ticTacToe/TicTacToe';
+import TicTacToe, { ITicTacToe } from './ticTacToe/TicTacToe';
 
 export const GameContext = createContext<{
-  game: TicTacToe | null
+  game: ITicTacToe
 }>({
   game: new TicTacToe()
 });

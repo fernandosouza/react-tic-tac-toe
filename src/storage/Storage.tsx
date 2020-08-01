@@ -1,4 +1,6 @@
 class Storage {
+  private storageName: string;
+
   constructor(storageName = 'gameLeaderBoard', initialValue = '[]') {
     this.storageName = storageName;
     if (!localStorage.getItem(storageName)) {
@@ -6,11 +8,15 @@ class Storage {
     }
   }
 
-  getData() {
-    return JSON.parse(localStorage.getItem(this.storageName));
+  getData<V>(): V | null {
+    const storedData = localStorage.getItem(this.storageName);
+    if (storedData) {
+      return JSON.parse(storedData || '');
+    }
+    return null;
   }
 
-  update(data) {
+  update(data: any) {
     localStorage.setItem(this.storageName, JSON.stringify(data));
   }
 }

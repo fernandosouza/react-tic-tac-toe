@@ -1,7 +1,7 @@
 import '../testHelpers/LocalStorageMock';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './App.tsx';
 import { MemoryRouter as Router } from 'react-router-dom';
 import TicTacToe from './ticTacToe/TicTacToe';
 

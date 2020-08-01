@@ -16,7 +16,7 @@ const scale = keyframes`
   }
 `;
 
-const Player1 = styled(X) <{ winner?: boolean }>`
+const Player1 = styled(X) <{ winner: boolean }>`
   width: 100px;
   height: 100px;
 
@@ -25,7 +25,7 @@ const Player1 = styled(X) <{ winner?: boolean }>`
   `}
 `
 
-const Player2 = styled(Circle) <{ winner?: boolean }>`
+const Player2 = styled(Circle) <{ winner: boolean }>`
   width: 100px;
   height: 100px;
 
