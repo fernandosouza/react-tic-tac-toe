@@ -1,5 +1,5 @@
 import React from 'react';
-import App from '../App';
+import App from '../App.tsx';
 import Setup from '../setup/Setup';
 import LeaderBoard from '../leaderBoard/LeaderBoard';
 import {

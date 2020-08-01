@@ -4,11 +4,19 @@ interface PlayerManagerError {
   code: string
 }
 
+export interface IPlayersManager {
+  checkErros: () => PlayerManagerError[]
+  addPlayer: (playerName: string) => void;
+  getCurrentPlayer: () => Player;
+  nextPlayerTurn: () => Player;
+  switchPlayer: (playerIndex: number) => Player;
+}
+
 /**
  * Manages players providing a public API for adding players and sets which one 
  * is in the turn.
  **/
-class PlayersManager {
+class PlayersManager implements IPlayersManager {
   private erros_: PlayerManagerError[] = [];
   private players_: Player[] = [];
   private currentPlayerIndex_ = 0;
@@ -36,7 +44,7 @@ class PlayersManager {
    * Checks if there are erros regarding players.
    * @returns {Array} Array of errors
    **/
-  checkErros() {
+  checkErros(): PlayerManagerError[] {
     this.erros_ = [];
     if (!this.players_.length) {
       this.erros_.push({ code: 'no_players' });
