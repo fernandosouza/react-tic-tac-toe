@@ -26,6 +26,7 @@
   "devDependencies": {
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.12.1",
+    "jest-styled-components": "7.0.2",
     "node-sass": "4.14.1",
     "react-router-test-context": "0.1.0",
     "react-scripts": "3.4.1",
